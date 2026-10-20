@@ -38,13 +38,23 @@
       background-color: var(--df-navy-bg);
       color: #cbd5e1;
       margin: 0;
-      padding: 14px;
+      padding: 6px 10px;
       overflow-x: hidden;
+      overflow-y: auto;
       min-height: 100vh;
-      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 10px;
     }
 
     #app-container {
+      width: 100%;
+      max-width: 580px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
       transition: transform 0.15s ease-out;
       transform-origin: top center;
       transform: scale(var(--app-scale));
@@ -184,48 +194,47 @@
   </style>
 </head>
 <body>
-  <div id="app-container" class="max-w-5xl mx-auto space-y-4">
+  <div id="app-container">
     <!-- ============================================================== -->
     <!-- GLOBAL HEADER: CELESTIAL NAVY & GOLD                           -->
     <!-- ============================================================== -->
-    <header class="df-frame df-corners p-3.5 flex flex-wrap items-center justify-between gap-3 relative">
+    <header class="df-frame df-corners px-3 py-1.5 flex flex-wrap items-center justify-between gap-2 relative w-full">
       <div class="df-finial-top">▲</div>
       
       <!-- Brand Logo -->
-      <div class="flex items-center gap-3 cursor-pointer" onclick="showScreen('title')">
-        <div class="w-4 h-4 bg-amber-400 border border-amber-200 rotate-45 shadow-[0_0_10px_#f59e0b]"></div>
+      <div class="flex items-center gap-2 cursor-pointer" onclick="showScreen('title')">
+        <div class="w-3.5 h-3.5 bg-amber-400 border border-amber-200 rotate-45 shadow-[0_0_8px_#f59e0b]"></div>
         <div>
-          <h1 class="text-[11px] lg:text-[13px] text-[#fcedb6] tracking-wider font-bold">WUMPUS WORLD • CELESTIAL CAVERNS</h1>
-          <p class="text-[8px] lg:text-[9.5px] text-sky-200/80 mt-0.5">AIMA CLAUSE RESOLUTION • GODOT 2D LIGHTING • RPG STONE TILES</p>
+          <h1 class="text-[9.5px] md:text-[11px] text-[#fcedb6] tracking-wider font-bold">WUMPUS WORLD</h1>
+          <p class="text-[7.5px] text-sky-200/80">AIMA RESOLUTION • GODOT LIGHTING</p>
         </div>
       </div>
 
       <!-- Navigation & Controls -->
-      <div class="flex flex-wrap items-center gap-2.5 text-[9px]">
-        <button onclick="showScreen('title')" id="nav-btn-title" class="df-btn py-1.5 px-3 active">
-          TITLE MENU
+      <div class="flex flex-wrap items-center gap-1.5 text-[8.5px]">
+        <button onclick="showScreen('title')" id="nav-btn-title" class="df-btn py-1 px-2 active">
+          TITLE
         </button>
-        <button onclick="showScreen('game')" id="nav-btn-game" class="df-btn py-1.5 px-3">
+        <button onclick="showScreen('game')" id="nav-btn-game" class="df-btn py-1 px-2">
           EXPEDITION
         </button>
-        <button onclick="openRulesModal()" class="df-btn py-1.5 px-3">
+        <button onclick="openRulesModal()" class="df-btn py-1 px-2">
           RULES
         </button>
-        <button onclick="openLogicManualModal()" class="df-btn py-1.5 px-3">
+        <button onclick="openLogicManualModal()" class="df-btn py-1 px-2">
           AIMA MANUAL
         </button>
 
         <!-- UI Zoom Controls -->
-        <div class="flex items-center gap-1.5 bg-[#060a1d] border border-[#202952] px-2 py-1">
-          <span class="text-[8px] text-slate-400 font-bold">ZOOM:</span>
-          <button onclick="zoomUi(-0.1)" class="df-btn px-1.5 py-0.5 text-[9px] font-bold" title="Zoom Out (-)">-</button>
-          <span id="zoom-badge" class="text-[9px] text-[#fcedb6] font-bold px-1.5">100%</span>
-          <button onclick="zoomUi(0.1)" class="df-btn px-1.5 py-0.5 text-[9px] font-bold" title="Zoom In (+)">+</button>
-          <button onclick="setUiScale(1.0)" class="df-btn px-1.5 py-0.5 text-[7.5px] text-slate-300" title="Reset (0)">RESET</button>
+        <div class="flex items-center gap-1 bg-[#060a1d] border border-[#202952] px-1.5 py-0.5">
+          <button onclick="zoomUi(-0.1)" class="df-btn px-1 py-0.5 text-[8px] font-bold" title="Zoom Out (-)">-</button>
+          <span id="zoom-badge" class="text-[8px] text-[#fcedb6] font-bold px-1">100%</span>
+          <button onclick="zoomUi(0.1)" class="df-btn px-1 py-0.5 text-[8px] font-bold" title="Zoom In (+)">+</button>
+          <button onclick="setUiScale(1.0)" class="df-btn px-1 py-0.5 text-[7px] text-slate-300" title="Reset (0)">0</button>
         </div>
 
-        <button onclick="toggleAudio()" id="btn-audio" class="df-btn py-1.5 px-3">
-          AUDIO: ON
+        <button onclick="toggleAudio()" id="btn-audio" class="df-btn py-1 px-2">
+          SND: ON
         </button>
       </div>
     </header>
@@ -233,88 +242,83 @@
     <!-- ============================================================== -->
     <!-- SCREEN 1: START SCREEN (TITLE, MAP SELECTOR, CAVERN VIEW)      -->
     <!-- ============================================================== -->
-    <section id="screen-title" class="df-frame df-corners p-6 relative max-w-2xl mx-auto flex flex-col items-center justify-center text-center space-y-5">
+    <section id="screen-title" class="df-frame df-corners p-4 relative w-full flex flex-col items-center justify-center text-center space-y-3">
       <div class="df-finial-top">▲</div>
       <div class="df-finial-bot">▼</div>
 
-      <div class="space-y-2 mt-1">
-        <div class="inline-block px-3.5 py-1.5 bg-[#0b1335] border border-[var(--df-gold-dark)] text-[#fcedb6] text-[8.5px] tracking-widest uppercase">
+      <div class="space-y-1">
+        <div class="inline-block px-2.5 py-1 bg-[#0b1335] border border-[var(--df-gold-dark)] text-[#fcedb6] text-[8px] tracking-widest uppercase">
           Artificial Intelligence: A Modern Approach
         </div>
-        <h1 class="text-2xl md:text-3xl text-[#fcedb6] tracking-widest font-bold filter drop-shadow-[0_0_15px_#e8ca74] pt-1">
+        <h1 class="text-xl md:text-2xl text-[#fcedb6] tracking-widest font-bold filter drop-shadow-[0_0_12px_#e8ca74] pt-0.5">
           WUMPUS WORLD
         </h1>
-        <h2 class="text-[9.5px] md:text-[11.5px] text-sky-300 tracking-wider font-bold">
+        <h2 class="text-[8.5px] md:text-[10px] text-sky-300 tracking-wider font-bold">
           CAVERNS OF LOGIC • PROPOSITIONAL RESOLUTION
         </h2>
       </div>
 
       <!-- Cavern Entrance Canvas Centerpiece -->
       <div class="relative group">
-        <div class="p-2 bg-[#060a1d] border-2 border-[var(--df-gold-dark)] shadow-[0_0_30px_rgba(232,202,116,0.18)] inline-block">
-          <canvas id="titleCanvas" width="340" height="220" class="block bg-[#050816]"></canvas>
-        </div>
-        <div class="absolute bottom-3 left-0 right-0 text-center pointer-events-none">
-          <span class="inline-block px-3 py-1 bg-black/85 border border-[#202952] text-[#fcedb6] text-[7.5px] tracking-wider animate-pulse">
-            TORCHLIGHT ILLUMINATING CAVERN ENTRANCE
-          </span>
+        <div class="p-1.5 bg-[#060a1d] border-2 border-[var(--df-gold-dark)] shadow-[0_0_20px_rgba(232,202,116,0.18)] inline-block">
+          <canvas id="titleCanvas" width="300" height="150" class="block bg-[#050816]"></canvas>
         </div>
       </div>
 
       <!-- Map Selection Carousel & Browser -->
-      <div class="df-frame df-corners p-4 w-full max-w-lg relative bg-[#060b24]">
+      <div class="df-frame df-corners p-2.5 w-full max-w-md relative bg-[#060b24]">
         <div class="df-finial-top">▲</div>
-        <div class="flex items-center justify-between border-b border-[#1b2554] pb-2 mb-3">
-          <div class="text-[9px] text-[#fcedb6] font-bold tracking-wider">
+        <div class="flex items-center justify-between border-b border-[#1b2554] pb-1.5 mb-1.5">
+          <div class="text-[8.5px] text-[#fcedb6] font-bold tracking-wider">
             EXPEDITION MAP (00 - 20)
           </div>
-          <button onclick="openMapBrowserModal()" class="df-btn text-[8px] py-1 px-2.5 text-sky-300">
+          <button onclick="openMapBrowserModal()" class="df-btn text-[7.5px] py-0.5 px-2 text-sky-300">
             BROWSE ALL 21 MAPS
           </button>
         </div>
 
-        <div class="flex items-center justify-between gap-3">
-          <button onclick="changeMap(-1)" class="df-btn text-[11px] py-2 px-3 font-bold" id="btn-prev-map">
+        <div class="flex items-center justify-between gap-2">
+          <button onclick="changeMap(-1)" class="df-btn text-[10px] py-1.5 px-2.5 font-bold" id="btn-prev-map">
             ◄
           </button>
 
-          <div class="flex-1 df-inset p-2.5 text-center space-y-1.5">
-            <div class="text-[10.5px] md:text-[12px] text-[#fcedb6] font-bold tracking-wider" id="title-map-name">
+          <div class="flex-1 df-inset p-2 text-center space-y-1">
+            <div class="text-[9.5px] md:text-[11px] text-[#fcedb6] font-bold tracking-wider" id="title-map-name">
               MAP 00 (AIMA BOOK)
             </div>
-            <div class="text-[8px] md:text-[9px] text-sky-200/90 truncate" id="title-map-desc">
+            <div class="text-[7.5px] md:text-[8.5px] text-sky-200/90 truncate" id="title-map-desc">
               Canonical AIMA Book Scenario
             </div>
-            <div class="flex justify-center items-center gap-4 text-[8px] md:text-[9px] text-slate-300 pt-1 border-t border-[#151f47]">
+            <div class="flex justify-center items-center gap-3 text-[7.5px] md:text-[8.5px] text-slate-300 pt-0.5 border-t border-[#151f47]">
               <span class="text-rose-300">PITS: <b id="title-map-pits" class="text-white">3</b></span>
               <span class="text-amber-300">GOLD: <b id="title-map-gold" class="text-white">(2, 3)</b></span>
               <span class="text-purple-300">WUMPUS: <b id="title-map-wumpus" class="text-white">(1, 3)</b></span>
             </div>
           </div>
 
-          <button onclick="changeMap(1)" class="df-btn text-[11px] py-2 px-3 font-bold" id="btn-next-map">
+          <button onclick="changeMap(1)" class="df-btn text-[10px] py-1.5 px-2.5 font-bold" id="btn-next-map">
             ►
           </button>
         </div>
       </div>
 
       <!-- Main Action Menu -->
-      <div class="w-full max-w-lg space-y-2.5 pt-1">
-        <button onclick="showScreen('game'); playSfx(440, 'triangle', 0.2, 0.2, 880);" class="df-btn df-btn-emerald w-full py-3.5 text-[11px] md:text-[12.5px] tracking-widest font-bold shadow-[0_0_18px_rgba(16,185,129,0.35)] hover:scale-[1.01] transition-transform">
+      <div class="w-full max-w-md space-y-2 pt-0.5">
+        <button onclick="showScreen('game'); playSfx(440, 'triangle', 0.2, 0.2, 880);" class="df-btn df-btn-emerald w-full py-2.5 text-[10px] md:text-[11.5px] tracking-widest font-bold shadow-[0_0_15px_rgba(16,185,129,0.35)] hover:scale-[1.01] transition-transform">
           [ ◄ ENTER CAVERN (START EXPEDITION) ► ]
         </button>
-        <div class="grid grid-cols-2 gap-2.5">
-          <button onclick="openRulesModal()" class="df-btn w-full py-2.5 text-[9.5px]">
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="openRulesModal()" class="df-btn w-full py-1.5 text-[8.5px]">
             RULES & SENSES
           </button>
-          <button onclick="openLogicManualModal()" class="df-btn w-full py-2.5 text-[9.5px]">
+          <button onclick="openLogicManualModal()" class="df-btn w-full py-1.5 text-[8.5px]">
             AIMA LOGIC MANUAL
           </button>
         </div>
       </div>
 
       <!-- Quick Key Guide -->
-      <div class="df-inset p-2.5 w-full max-w-lg text-slate-300 text-[8px] md:text-[9px] leading-relaxed flex flex-wrap justify-around items-center gap-2">
+      <div class="df-inset p-2 w-full max-w-md text-slate-300 text-[7.5px] md:text-[8px] leading-relaxed flex flex-wrap justify-around items-center gap-1.5">
         <span><b class="text-[#fcedb6]">[SPACE/ENTER]</b> START</span>
         <span><b class="text-[#fcedb6]">[H]</b> RULES</span>
         <span><b class="text-[#fcedb6]">[M]</b> MANUAL</span>
@@ -325,78 +329,76 @@
     <!-- ============================================================== -->
     <!-- SCREEN 2: GAMEPLAY EXPEDITION (CENTERED MAP & INTEGRATED HUD) -->
     <!-- ============================================================== -->
-    <section id="screen-game" class="max-w-2xl mx-auto space-y-3.5 hidden">
+    <section id="screen-game" class="w-full flex flex-col items-center gap-2 hidden">
       <!-- THE RECTANGULAR MAP CONTAINER -->
-      <div class="df-frame df-corners p-3.5 relative w-full flex flex-col items-center">
+      <div class="df-frame df-corners p-2.5 relative w-full flex flex-col items-center">
         <div class="df-finial-top">▲</div>
         <div class="df-finial-bot">▼</div>
 
         <!-- 1. INTEGRATED STATUS RIBBON (INSIDE THE MAP RECTANGLE) -->
-        <div class="w-full flex flex-wrap items-center justify-between gap-2 pb-2.5 mb-2 border-b border-[#1b2554]">
-          <div class="df-inset px-3 py-1.5 text-[10px] md:text-[11.5px] text-[#fcedb6] font-bold">
-            POS: <span id="pos-stat" class="text-white text-[11.5px] md:text-[13px]">(1, 1)</span>
+        <div class="w-full flex items-center justify-between gap-1 pb-1.5 mb-1.5 border-b border-[#1b2554] whitespace-nowrap text-[8.5px] md:text-[9.5px]">
+          <div class="df-inset px-2 py-1 text-[#fcedb6] font-bold">
+            POS: <span id="pos-stat" class="text-white text-[9.5px] md:text-[10.5px]">(1, 1)</span>
           </div>
 
           <!-- Map Switcher inside Map Rectangle -->
-          <div class="flex items-center gap-1.5 bg-[#060a1d] border border-[#202952] px-2.5 py-1">
-            <button onclick="changeMap(-1)" class="text-[10px] text-[#fcedb6] hover:text-white px-1">◄</button>
-            <span id="game-map-name" class="text-[10px] md:text-[11px] text-[#fcedb6] font-bold px-1.5">MAP 00</span>
-            <button onclick="changeMap(1)" class="text-[10px] text-[#fcedb6] hover:text-white px-1">►</button>
+          <div class="flex items-center gap-1 bg-[#060a1d] border border-[#202952] px-1.5 py-1">
+            <button onclick="changeMap(-1)" class="text-[9px] text-[#fcedb6] hover:text-white px-0.5">◄</button>
+            <span id="game-map-name" class="text-[8.5px] md:text-[9px] text-[#fcedb6] font-bold px-0.5">MAP 00</span>
+            <button onclick="changeMap(1)" class="text-[9px] text-[#fcedb6] hover:text-white px-0.5">►</button>
           </div>
 
-          <div class="flex items-center gap-2.5 text-[10px] md:text-[11.5px]">
-            <div class="df-inset px-3 py-1.5 text-emerald-400 font-bold">
-              SCORE: <span id="score-stat" class="text-white text-[11.5px] md:text-[13px]">1000</span>
-            </div>
-            <div class="df-inset px-3 py-1.5 text-amber-300 font-bold" id="arrow-count-badge">
-              ARROWS: 1
-            </div>
+          <div class="df-inset px-2 py-1 text-emerald-400 font-bold">
+            SCORE: <span id="score-stat" class="text-white text-[9.5px] md:text-[10.5px]">1000</span>
+          </div>
+          <div class="df-inset px-2 py-1 text-amber-300 font-bold" id="arrow-count-badge">
+            ARROWS: 1
           </div>
         </div>
 
         <!-- 2. PERCEPTIONS RIBBON (INSIDE THE MAP RECTANGLE) -->
-        <div id="senses-ribbon" class="w-full flex flex-wrap items-center justify-center gap-2 py-1.5 px-2.5 mb-3 bg-[#050818] border border-[#18234c] text-[8.5px] md:text-[9.5px]">
+        <div id="senses-ribbon" class="w-full flex flex-wrap items-center justify-center gap-1.5 py-1 px-2 mb-1.5 bg-[#050818] border border-[#18234c] text-[8px] md:text-[8.5px]">
           <span class="text-slate-400 mr-1 font-bold">PERCEPTS:</span>
-          <span id="sense-breeze" class="px-2.5 py-1 bg-sky-950 text-sky-300 border border-sky-600 hidden font-bold">BREEZE</span>
-          <span id="sense-stench" class="px-2.5 py-1 bg-emerald-950 text-emerald-300 border border-emerald-600 hidden font-bold">STENCH</span>
-          <span id="sense-glitter" class="px-2.5 py-1 bg-amber-950 text-amber-300 border border-amber-500 animate-pulse hidden font-bold">GLITTER</span>
-          <span id="sense-scream" class="px-2.5 py-1 bg-rose-950 text-rose-300 border border-rose-600 hidden font-bold">SCREAM</span>
-          <span id="sense-safe" class="px-2.5 py-1 text-slate-300 font-bold">NO PERCEPTS (CLEAR AIR)</span>
+          <span id="sense-breeze" class="px-2 py-0.5 bg-sky-950 text-sky-300 border border-sky-600 hidden font-bold">BREEZE</span>
+          <span id="sense-stench" class="px-2 py-0.5 bg-emerald-950 text-emerald-300 border border-emerald-600 hidden font-bold">STENCH</span>
+          <span id="sense-glitter" class="px-2 py-0.5 bg-amber-950 text-amber-300 border border-amber-500 animate-pulse hidden font-bold">GLITTER</span>
+          <span id="sense-scream" class="px-2 py-0.5 bg-rose-950 text-rose-300 border border-rose-600 hidden font-bold">SCREAM</span>
+          <span id="sense-safe" class="px-2 py-0.5 text-slate-300 font-bold">NO PERCEPTS (CLEAR AIR)</span>
         </div>
 
         <!-- 3. CENTERED 4x4 DUNGEON CANVAS (WITH RPG STONE TEXTURES & RESTORED GODOT TORCH LIGHT) -->
-        <div class="relative bg-[#03050c] p-1 border-2 border-[var(--df-gold-dark)] shadow-[0_0_25px_rgba(0,0,0,0.95)]">
-          <canvas id="gameCanvas" width="480" height="480" class="block cursor-crosshair"></canvas>
+        <div class="relative bg-[#03050c] p-0.5 border-2 border-[var(--df-gold-dark)] shadow-[0_0_20px_rgba(0,0,0,0.95)]">
+          <canvas id="gameCanvas" width="380" height="380" class="block cursor-crosshair"></canvas>
         </div>
 
         <!-- 4. ACTION & MOVEMENT CONTROLS (DOCKED INSIDE MAP RECTANGLE) -->
-        <div class="w-full pt-3 mt-3 border-t border-[#1b2554] flex flex-wrap items-center justify-between gap-3">
+        <div class="w-full pt-2 mt-1.5 border-t border-[#1b2554] flex items-center justify-between gap-2">
           <!-- Left Action Buttons -->
-          <div class="flex flex-col gap-2">
-            <button onclick="triggerGrab()" class="df-btn df-btn-amber text-[9.5px] py-2.5 px-3.5">
+          <div class="flex flex-col gap-1.5">
+            <button onclick="triggerGrab()" class="df-btn df-btn-amber text-[8.5px] py-1.5 px-2.5">
               GRAB GOLD
             </button>
-            <button onclick="triggerClimbUp()" class="df-btn df-btn-emerald text-[9.5px] py-2.5 px-3.5">
-              CLIMB EXIT (1,1)
+            <button onclick="triggerClimbUp()" class="df-btn df-btn-emerald text-[8.5px] py-1.5 px-2.5">
+              CLIMB (1,1)
             </button>
           </div>
 
           <!-- Center Directional D-Pad -->
-          <div class="grid grid-cols-3 gap-1.5 w-32">
+          <div class="grid grid-cols-3 gap-1 w-28">
             <div></div>
-            <button onclick="movePlayer(0, -1)" class="df-btn py-2.5 text-[12px] font-bold text-center" title="North (W / ▲)">▲</button>
+            <button onclick="movePlayer(0, -1)" class="df-btn h-7 p-0 flex items-center justify-center text-[10px] font-bold" title="North (W / ▲)">▲</button>
             <div></div>
-            <button onclick="movePlayer(-1, 0)" class="df-btn py-2.5 text-[12px] font-bold text-center" title="West (A / ◄)">◄</button>
-            <button onclick="movePlayer(0, 1)" class="df-btn py-2.5 text-[12px] font-bold text-center" title="South (S / ▼)">▼</button>
-            <button onclick="movePlayer(1, 0)" class="df-btn py-2.5 text-[12px] font-bold text-center" title="East (D / ►)">►</button>
+            <button onclick="movePlayer(-1, 0)" class="df-btn h-7 p-0 flex items-center justify-center text-[10px] font-bold" title="West (A / ◄)">◄</button>
+            <button onclick="movePlayer(0, 1)" class="df-btn h-7 p-0 flex items-center justify-center text-[10px] font-bold" title="South (S / ▼)">▼</button>
+            <button onclick="movePlayer(1, 0)" class="df-btn h-7 p-0 flex items-center justify-center text-[10px] font-bold" title="East (D / ►)">►</button>
           </div>
 
           <!-- Right Action Buttons -->
-          <div class="flex flex-col gap-2">
-            <button onclick="triggerShoot('UP')" class="df-btn text-[9.5px] py-2.5 px-3.5 text-sky-200 border-sky-600">
+          <div class="flex flex-col gap-1.5">
+            <button onclick="triggerShoot('UP')" class="df-btn text-[8.5px] py-1.5 px-2.5 text-sky-200 border-sky-600">
               SHOOT ARROW
             </button>
-            <button onclick="resetGame()" class="df-btn text-[9.5px] py-2.5 px-3.5 text-slate-300">
+            <button onclick="resetGame()" class="df-btn text-[8.5px] py-1.5 px-2.5 text-slate-300">
               RESTART MAP
             </button>
           </div>
@@ -404,23 +406,23 @@
       </div>
 
       <!-- 5. AIMA CLAUSE RESOLUTION INFERENCE LOG (CENTERED BELOW MAP) -->
-      <div class="df-frame df-corners p-4 w-full relative">
-        <div class="flex items-center justify-between border-b border-[#1b2554] pb-2 mb-2.5">
-          <div class="flex items-center gap-2">
-            <div class="w-3 h-3 bg-amber-400 rotate-45"></div>
-            <span class="text-[9.5px] md:text-[11px] text-[#fcedb6] font-bold tracking-wider">AIMA CLAUSE RESOLUTION LOG</span>
+      <div class="df-frame df-corners p-2.5 w-full relative">
+        <div class="flex items-center justify-between border-b border-[#1b2554] pb-1 mb-1">
+          <div class="flex items-center gap-1.5">
+            <div class="w-2.5 h-2.5 bg-amber-400 rotate-45"></div>
+            <span class="text-[8.5px] md:text-[9.5px] text-[#fcedb6] font-bold tracking-wider">AIMA CLAUSE RESOLUTION LOG</span>
           </div>
-          <button onclick="openMathProofFromVictory()" class="df-btn text-[8.5px] py-1 px-2.5 text-sky-300">
+          <button onclick="openMathProofFromVictory()" class="df-btn text-[7.5px] py-0.5 px-2 text-sky-300">
             FULL GRIMOIRE
           </button>
         </div>
-        <div id="proof-stream" class="overflow-y-auto max-h-[150px] space-y-2 pr-1 text-[9px] md:text-[10px]">
+        <div id="proof-stream" class="overflow-y-auto max-h-[70px] space-y-1 pr-1 text-[8px] md:text-[8.5px]">
           <!-- Real-time AIMA refutation proofs -->
         </div>
-        <div class="pt-2.5 mt-2.5 border-t border-[#1b2554] flex justify-between items-center text-[9px]">
-          <button onclick="showScreen('title')" class="df-btn text-[9px] py-1.5 px-3">◄ TITLE MENU</button>
-          <div class="flex items-center gap-2">
-            <button onclick="changeMap(1)" class="df-btn df-btn-emerald text-[9px] py-1.5 px-3">NEXT MAP ►</button>
+        <div class="pt-1 mt-1 border-t border-[#1b2554] flex justify-between items-center text-[8px]">
+          <button onclick="showScreen('title')" class="df-btn text-[8px] py-0.5 px-2">◄ TITLE MENU</button>
+          <div class="flex items-center gap-1.5">
+            <button onclick="changeMap(1)" class="df-btn df-btn-emerald text-[8px] py-0.5 px-2">NEXT MAP ►</button>
           </div>
         </div>
       </div>
@@ -1938,7 +1940,7 @@ if (typeof module !== "undefined" && module.exports) {
       if (wumpusEl) wumpusEl.innerText = "(" + cur.aima.wumpus[0] + ", " + cur.aima.wumpus[1] + ")";
 
       const gameMapBadge = document.getElementById("game-map-name");
-      if (gameMapBadge) gameMapBadge.innerText = cur.id === 0 ? "MAP 00 (AIMA)" : "MAP " + cur.id.toString().padStart(2, "0");
+      if (gameMapBadge) gameMapBadge.innerText = "MAP " + cur.id.toString().padStart(2, "0");
 
       WUMPUS_MAPS.forEach((_, i) => {
         const c = document.getElementById("map-card-" + i);
@@ -1955,7 +1957,7 @@ if (typeof module !== "undefined" && module.exports) {
       mapData.pits = cur.canvas.pits.map(p => ({ ...p }));
 
       resetGame();
-      showFramedToast("MAP_LOADED", "Loaded " + cur.name + ": " + cur.description);
+      showFramedToast("MAP_LOADED", "Loaded " + cur.name);
     }
 
     function changeMap(delta) {
@@ -2012,11 +2014,11 @@ if (typeof module !== "undefined" && module.exports) {
 
     let titleTime = 0;
     const titleEmbers = [];
-    for (let i = 0; i < 28; i++) {
+    for (let i = 0; i < 24; i++) {
       titleEmbers.push({
-        x: Math.random() * 340,
-        y: Math.random() * 220,
-        speed: 0.3 + Math.random() * 0.7,
+        x: Math.random() * 300,
+        y: Math.random() * 150,
+        speed: 0.25 + Math.random() * 0.6,
         size: Math.random() > 0.5 ? 2 : 1,
         alpha: 0.2 + Math.random() * 0.8,
         drift: (Math.random() - 0.5) * 0.4
@@ -2029,7 +2031,7 @@ if (typeof module !== "undefined" && module.exports) {
         tCtx.clearRect(0, 0, titleCanvas.width, titleCanvas.height);
 
         const cx = titleCanvas.width / 2;
-        const cy = titleCanvas.height / 2 + 10;
+        const cy = titleCanvas.height / 2 + 6;
 
         // 1. Cavern Stone Background
         tCtx.fillStyle = "#060a1d";
@@ -2037,18 +2039,18 @@ if (typeof module !== "undefined" && module.exports) {
 
         // Stone Pillars
         tCtx.fillStyle = "#0a102b";
-        tCtx.fillRect(18, 15, 34, titleCanvas.height - 30);
-        tCtx.fillRect(titleCanvas.width - 52, 15, 34, titleCanvas.height - 30);
+        tCtx.fillRect(14, 10, 26, titleCanvas.height - 20);
+        tCtx.fillRect(titleCanvas.width - 40, 10, 26, titleCanvas.height - 20);
         tCtx.strokeStyle = "#15214e";
-        tCtx.strokeRect(18, 15, 34, titleCanvas.height - 30);
-        tCtx.strokeRect(titleCanvas.width - 52, 15, 34, titleCanvas.height - 30);
+        tCtx.strokeRect(14, 10, 26, titleCanvas.height - 20);
+        tCtx.strokeRect(titleCanvas.width - 40, 10, 26, titleCanvas.height - 20);
 
         // Stone Floor flagstones
         for (let c = 0; c < 6; c++) {
           tCtx.fillStyle = (c % 2 === 0) ? "#090e28" : "#0d1436";
-          tCtx.fillRect(c * 57, titleCanvas.height - 48, 57, 48);
+          tCtx.fillRect(c * 50, titleCanvas.height - 35, 50, 35);
           tCtx.strokeStyle = "#1a275a";
-          tCtx.strokeRect(c * 57, titleCanvas.height - 48, 57, 48);
+          tCtx.strokeRect(c * 50, titleCanvas.height - 35, 50, 35);
         }
 
         // 2. Archer Idle Breathing State
@@ -2059,15 +2061,15 @@ if (typeof module !== "undefined" && module.exports) {
         if (archerSprite && archerSprite.complete && archerSprite.naturalWidth > 0) {
           tCtx.save();
           tCtx.translate(cx, cy + bobY);
-          tCtx.drawImage(archerSprite, -36, -46, 72, 92);
+          tCtx.drawImage(archerSprite, -27, -35, 54, 70);
           tCtx.restore();
         }
 
         // 3. Dynamic Torchlight Halo Centered on Archer
-        const flicker = Math.sin(titleTime * 7) * 4 + Math.cos(titleTime * 13) * 3;
-        const lightRadius = 115 + flicker;
+        const flicker = Math.sin(titleTime * 7) * 3 + Math.cos(titleTime * 13) * 2;
+        const lightRadius = 88 + flicker;
 
-        const grad = tCtx.createRadialGradient(cx, cy + bobY - 8, 14, cx, cy + bobY - 8, lightRadius);
+        const grad = tCtx.createRadialGradient(cx, cy + bobY - 6, 10, cx, cy + bobY - 6, lightRadius);
         grad.addColorStop(0, "rgba(255, 230, 150, 0.45)");
         grad.addColorStop(0.35, "rgba(245, 160, 40, 0.22)");
         grad.addColorStop(0.7, "rgba(180, 70, 20, 0.08)");
@@ -2077,12 +2079,12 @@ if (typeof module !== "undefined" && module.exports) {
         tCtx.globalCompositeOperation = "lighter";
         tCtx.fillStyle = grad;
         tCtx.beginPath();
-        tCtx.arc(cx, cy + bobY - 8, lightRadius, 0, Math.PI * 2);
+        tCtx.arc(cx, cy + bobY - 6, lightRadius, 0, Math.PI * 2);
         tCtx.fill();
         tCtx.restore();
 
         // Dark Cavern Vignette overlay
-        const darkGrad = tCtx.createRadialGradient(cx, cy + bobY - 8, lightRadius * 0.75, cx, cy + bobY - 8, lightRadius * 1.4);
+        const darkGrad = tCtx.createRadialGradient(cx, cy + bobY - 6, lightRadius * 0.75, cx, cy + bobY - 6, lightRadius * 1.4);
         darkGrad.addColorStop(0, "rgba(0, 0, 0, 0)");
         darkGrad.addColorStop(1, "rgba(5, 8, 22, 0.95)");
         tCtx.fillStyle = darkGrad;
@@ -2111,7 +2113,7 @@ if (typeof module !== "undefined" && module.exports) {
     ctx.imageSmoothingEnabled = false;
 
     const GRID = 4;
-    const CELL = 120;
+    const CELL = 95;
     let time = 0;
 
     let player = {
@@ -2186,33 +2188,25 @@ if (typeof module !== "undefined" && module.exports) {
 
       if (tileImg && tileImg.complete && tileImg.naturalWidth > 0) {
         cctx.drawImage(tileImg, x, y, size, size);
-
-        if (!isVisited) {
-          cctx.fillStyle = 'rgba(4, 6, 16, 0.88)';
-          cctx.fillRect(x, y, size, size);
-        } else {
-          cctx.fillStyle = 'rgba(255, 235, 170, 0.04)';
-          cctx.fillRect(x, y, size, size);
-        }
       } else {
         const isEven = (col + row) % 2 === 0;
-        cctx.fillStyle = isVisited ? (isEven ? '#38322a' : '#453e34') : '#11100e';
+        cctx.fillStyle = isEven ? '#38322a' : '#453e34';
         cctx.fillRect(x, y, size, size);
       }
 
-      // Stone mortar boundary lines
-      cctx.strokeStyle = '#18140f';
-      cctx.lineWidth = 1.5;
+      // Very subtle, atmospheric stone mortar hint (NO harsh black border!)
+      cctx.strokeStyle = 'rgba(20, 16, 12, 0.20)';
+      cctx.lineWidth = 1;
       cctx.strokeRect(x, y, size, size);
 
-      // --- CENTERED ROOM COORDINATES (LARGER, HIGH-CONTRAST LEGIBILITY) ---
+      // --- CENTERED ROOM COORDINATES (CRISP, ENGRAVED RUNESTONE) ---
       const aimaX = col + 1;
       const aimaY = 4 - row;
       const cx = x + size / 2;
       const cy = y + size / 2;
 
       cctx.save();
-      cctx.font = 'bold 15px "Press Start 2P"';
+      cctx.font = 'bold 13px "Press Start 2P"';
       cctx.textAlign = 'center';
       cctx.textBaseline = 'middle';
 
@@ -2221,7 +2215,7 @@ if (typeof module !== "undefined" && module.exports) {
       cctx.fillText(`(${aimaX},${aimaY})`, cx + 1.5, cy + 1.5);
 
       // Engraved rune stone coordinates in crisp gold / slate
-      cctx.fillStyle = isVisited ? 'rgba(252, 237, 182, 0.55)' : 'rgba(160, 180, 220, 0.25)';
+      cctx.fillStyle = isVisited ? 'rgba(252, 237, 182, 0.65)' : 'rgba(160, 180, 220, 0.30)';
       cctx.fillText(`(${aimaX},${aimaY})`, cx, cy);
       cctx.restore();
     }
@@ -2230,12 +2224,12 @@ if (typeof module !== "undefined" && module.exports) {
     function drawRpgPit(cctx, x, y, size) {
       const cx = x + size / 2;
       const cy = y + size / 2;
-      const r = size * 0.38;
+      const r = size * 0.36;
 
       // Outer Jagged Rock Rim
       cctx.fillStyle = '#060814';
       cctx.beginPath();
-      cctx.arc(cx, cy, r + 4, 0, Math.PI * 2);
+      cctx.arc(cx, cy, r + 3, 0, Math.PI * 2);
       cctx.fill();
 
       // Deep Abyssal Void
@@ -2259,7 +2253,7 @@ if (typeof module !== "undefined" && module.exports) {
       for (let a = 0; a < Math.PI * 2; a += Math.PI / 4) {
         const px = cx + Math.cos(a) * (r - 2);
         const py = cy + Math.sin(a) * (r - 2);
-        cctx.fillRect(px - 2, py - 2, 4, 4);
+        cctx.fillRect(px - 1.5, py - 1.5, 3, 3);
       }
     }
 
@@ -2267,44 +2261,44 @@ if (typeof module !== "undefined" && module.exports) {
     function drawRpgGoldChest(cctx, x, y, size, animTime) {
       const cx = x + size / 2;
       const cy = y + size / 2;
-      const w = 38; const h = 30;
+      const w = 32; const h = 25;
       const gx = cx - w / 2; const gy = cy - h / 2;
 
       // Golden Radiance Glow
-      const glow = cctx.createRadialGradient(cx, cy, 4, cx, cy, 38);
+      const glow = cctx.createRadialGradient(cx, cy, 3, cx, cy, 32);
       glow.addColorStop(0, 'rgba(255, 235, 140, 0.55)');
       glow.addColorStop(0.6, 'rgba(245, 160, 20, 0.2)');
       glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
       cctx.fillStyle = glow;
-      cctx.fillRect(cx - 40, cy - 40, 80, 80);
+      cctx.fillRect(cx - 32, cy - 32, 64, 64);
 
       // Wooden Chest Body
       cctx.fillStyle = '#78350f';
-      cctx.fillRect(gx, gy + 8, w, h - 8);
+      cctx.fillRect(gx, gy + 7, w, h - 7);
       // Chest Lid (Barrel Top)
       cctx.fillStyle = '#92400e';
-      cctx.fillRect(gx + 2, gy, w - 4, 10);
+      cctx.fillRect(gx + 2, gy, w - 4, 8);
       cctx.fillStyle = '#b45309';
-      cctx.fillRect(gx + 4, gy + 1, w - 8, 3);
+      cctx.fillRect(gx + 3, gy + 1, w - 6, 2.5);
 
       // Gilded Gold Bands
       cctx.fillStyle = '#fbbf24';
-      cctx.fillRect(gx + 6, gy, 4, h);
-      cctx.fillRect(gx + w - 10, gy, 4, h);
+      cctx.fillRect(gx + 5, gy, 3.5, h);
+      cctx.fillRect(gx + w - 8.5, gy, 3.5, h);
 
       // Lock Plate & Keyhole
       cctx.fillStyle = '#fef08a';
-      cctx.fillRect(cx - 4, gy + 11, 8, 8);
+      cctx.fillRect(cx - 3.5, gy + 9, 7, 7);
       cctx.fillStyle = '#451a03';
-      cctx.fillRect(cx - 1.5, gy + 13, 3, 4);
+      cctx.fillRect(cx - 1, gy + 11, 2, 3);
 
       // Sparkle Glint Star
       const glint = (Math.sin(animTime * 6) + 1) / 2;
       if (glint > 0.4) {
         cctx.fillStyle = '#ffffff';
-        const sx = gx + 5; const sy = gy + 2;
-        cctx.fillRect(sx - 2, sy, 5, 1);
-        cctx.fillRect(sx, sy - 2, 1, 5);
+        const sx = gx + 4; const sy = gy + 2;
+        cctx.fillRect(sx - 2, sy, 4, 1);
+        cctx.fillRect(sx, sy - 2, 1, 4);
       }
     }
 
@@ -2321,43 +2315,43 @@ if (typeof module !== "undefined" && module.exports) {
         const scaleY = 1.0 + squish * 0.08;
         const bobY = Math.abs(squish) * 2;
 
-        cctx.translate(cx, cy + 6 + bobY);
+        cctx.translate(cx, cy + 5 + bobY);
         cctx.scale(scaleX, scaleY);
 
         // Bioluminescent Slime Glow
-        const glow = cctx.createRadialGradient(0, 0, 5, 0, 0, 36);
+        const glow = cctx.createRadialGradient(0, 0, 4, 0, 0, 30);
         glow.addColorStop(0, 'rgba(74, 222, 128, 0.35)');
         glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
         cctx.fillStyle = glow;
         cctx.beginPath();
-        cctx.arc(0, 0, 36, 0, Math.PI * 2);
+        cctx.arc(0, 0, 30, 0, Math.PI * 2);
         cctx.fill();
 
         // Draw Green Pixel Slime
         if (slimeSprite && slimeSprite.complete && slimeSprite.naturalWidth > 0) {
-          cctx.drawImage(slimeSprite, -34, -22, 68, 44);
+          cctx.drawImage(slimeSprite, -28, -18, 56, 36);
         } else {
           cctx.fillStyle = '#16a34a';
           cctx.beginPath();
-          cctx.arc(0, 0, 24, 0, Math.PI * 2);
+          cctx.arc(0, 0, 20, 0, Math.PI * 2);
           cctx.fill();
         }
       } else {
         // Slumped Slain Slime Puddle
-        cctx.translate(cx, cy + 18);
-        cctx.scale(1.35, 0.28);
+        cctx.translate(cx, cy + 15);
+        cctx.scale(1.25, 0.28);
         cctx.globalAlpha = 0.75;
         if (slimeSprite && slimeSprite.complete && slimeSprite.naturalWidth > 0) {
-          cctx.drawImage(slimeSprite, -34, -22, 68, 44);
+          cctx.drawImage(slimeSprite, -28, -18, 56, 36);
         }
         cctx.restore();
 
         // Retro Red SLAIN Banner
         cctx.save();
         cctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
-        cctx.fillRect(cx - 26, cy - 8, 52, 14);
+        cctx.fillRect(cx - 24, cy - 7, 48, 14);
         cctx.strokeStyle = '#ef4444';
-        cctx.strokeRect(cx - 26, cy - 8, 52, 14);
+        cctx.strokeRect(cx - 24, cy - 7, 48, 14);
         cctx.fillStyle = '#ef4444';
         cctx.font = '8px "Press Start 2P"';
         cctx.textAlign = 'center';
@@ -2506,15 +2500,15 @@ if (typeof module !== "undefined" && module.exports) {
       ctx.rotate(player.rotation);
       ctx.globalAlpha = player.alpha;
 
-      const SPRITE_RENDER_W = 46;
-      const SPRITE_RENDER_H = 58;
+      const SPRITE_RENDER_W = 40;
+      const SPRITE_RENDER_H = 50;
 
       if (spriteToDraw && spriteToDraw.complete && spriteToDraw.naturalWidth > 0) {
         ctx.drawImage(spriteToDraw, -SPRITE_RENDER_W / 2, -SPRITE_RENDER_H / 2 - 2, SPRITE_RENDER_W, SPRITE_RENDER_H);
       }
       ctx.restore();
 
-      // 7. RESTORED ORIGINAL GODOT-STYLE 2D SMOOTH TORCH LIGHTING
+      // 7. GODOT-STYLE 2D SMOOTH LIGHTING WITH 20% EDGE FEATHERING
       applyGodotSmoothLighting(px, py);
 
       // 8. Floating Golden Dust Motes in Cavern Air
@@ -2526,8 +2520,8 @@ if (typeof module !== "undefined" && module.exports) {
         if (m.x > canvas.width) m.x = 0;
 
         const dist = Math.hypot(m.x - px, m.y - py);
-        if (dist < 180) {
-          const lum = (1 - dist / 180) * m.alpha;
+        if (dist < 150) {
+          const lum = (1 - dist / 150) * m.alpha;
           ctx.fillStyle = `rgba(252, 237, 182, ${lum})`;
           ctx.fillRect(Math.floor(m.x), Math.floor(m.y), m.size, m.size);
         }
@@ -2537,44 +2531,102 @@ if (typeof module !== "undefined" && module.exports) {
       requestAnimationFrame(render);
     }
 
-    // --- RESTORED ORIGINAL GODOT-STYLE 2D SMOOTH TORCH LIGHTING ---
+    // --- REFINED GODOT-STYLE 2D SMOOTH LIGHTING WITH 20% EDGE FEATHERING ---
+    let lightCanvas = null;
+    let lightCtx = null;
+    function getLightCanvas(w, h) {
+      if (!lightCanvas || lightCanvas.width !== w || lightCanvas.height !== h) {
+        lightCanvas = document.createElement('canvas');
+        lightCanvas.width = w;
+        lightCanvas.height = h;
+        lightCtx = lightCanvas.getContext('2d');
+      }
+      return { canvas: lightCanvas, ctx: lightCtx };
+    }
+
     function applyGodotSmoothLighting(lightX, lightY) {
+      const { canvas: lCanvas, ctx: lCtx } = getLightCanvas(canvas.width, canvas.height);
+      const W = canvas.width;
+      const H = canvas.height;
+
+      // 1. Reset and fill with uniform deep cavern shadow
+      lCtx.globalCompositeOperation = 'source-over';
+      lCtx.fillStyle = 'rgba(3, 5, 14, 0.95)';
+      lCtx.fillRect(0, 0, W, H);
+
+      // 2. Cut out illumination for visited rooms with 20% edge feathering
+      // This completely eliminates unnatural square boundaries between cells
+      lCtx.globalCompositeOperation = 'destination-out';
+
+      for (let r = 0; r < 4; r++) {
+        for (let c = 0; c < 4; c++) {
+          if (!visited[r][c]) continue;
+
+          const cx = c * CELL + CELL / 2;
+          const cy = r * CELL + CELL / 2;
+
+          // Cell half-width is CELL * 0.5.
+          // rInner: central core of room is fully brightly illuminated.
+          // rOuter: extends to CELL * 0.72 (~22% feather zone beyond cell border).
+          // Adjacent visited cells overlap by 44% of CELL, merging seamlessly!
+          const rInner = CELL * 0.38;
+          const rOuter = CELL * 0.72;
+
+          const roomGrad = lCtx.createRadialGradient(cx, cy, rInner, cx, cy, rOuter);
+          roomGrad.addColorStop(0, 'rgba(0, 0, 0, 1.0)');     // 100% lit
+          roomGrad.addColorStop(0.55, 'rgba(0, 0, 0, 0.95)');  // bright floor interior
+          roomGrad.addColorStop(0.78, 'rgba(0, 0, 0, 0.60)');  // smooth 20% edge feather across border
+          roomGrad.addColorStop(1, 'rgba(0, 0, 0, 0.0)');      // softly fades into shadow
+          
+          lCtx.fillStyle = roomGrad;
+          lCtx.beginPath();
+          lCtx.arc(cx, cy, rOuter, 0, Math.PI * 2);
+          lCtx.fill();
+        }
+      }
+
+      // 3. Cut out player's dynamic torchlight
+      const flicker = Math.sin(time * 8) * 3 + Math.cos(time * 14) * 2;
+      const torchRadius = CELL * 1.5 + flicker;
+      const torchCutout = lCtx.createRadialGradient(lightX, lightY, 14, lightX, lightY, torchRadius);
+      torchCutout.addColorStop(0, 'rgba(0, 0, 0, 1.0)');
+      torchCutout.addColorStop(0.45, 'rgba(0, 0, 0, 0.92)');
+      torchCutout.addColorStop(0.78, 'rgba(0, 0, 0, 0.42)');
+      torchCutout.addColorStop(1, 'rgba(0, 0, 0, 0.0)');
+
+      lCtx.fillStyle = torchCutout;
+      lCtx.beginPath();
+      lCtx.arc(lightX, lightY, torchRadius, 0, Math.PI * 2);
+      lCtx.fill();
+
+      // 4. Composite smoothed feathered darkness mask onto main canvas
       ctx.save();
-      const radius = CELL * 2.2;
-      const flicker = Math.sin(time * 9) * 4 + Math.cos(time * 15) * 3;
-      const actualR = radius + flicker;
+      ctx.drawImage(lCanvas, 0, 0);
+      ctx.restore();
 
-      // 1. Dark darkness overlay outside radius
-      const darkGrad = ctx.createRadialGradient(lightX, lightY, CELL * 0.4, lightX, lightY, actualR);
-      darkGrad.addColorStop(0, 'rgba(5, 7, 20, 0)');
-      darkGrad.addColorStop(0.35, 'rgba(5, 7, 20, 0.30)');
-      darkGrad.addColorStop(0.70, 'rgba(3, 4, 12, 0.85)');
-      darkGrad.addColorStop(1, 'rgba(2, 2, 7, 0.99)');
-
-      ctx.fillStyle = darkGrad;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // 2. Warm radial glow centered directly on player (SCREEN blend mode)
+      // 5. RESTORED GODOT WARM TORCHLIGHT (SCREEN BLEND MODE)
+      ctx.save();
       ctx.globalCompositeOperation = 'screen';
-      const glowGrad = ctx.createRadialGradient(lightX, lightY, 15, lightX, lightY, actualR * 0.9);
-      glowGrad.addColorStop(0, 'rgba(255, 175, 45, 0.42)');
-      glowGrad.addColorStop(0.25, 'rgba(255, 115, 20, 0.26)');
-      glowGrad.addColorStop(0.55, 'rgba(190, 50, 5, 0.12)');
-      glowGrad.addColorStop(0.85, 'rgba(80, 15, 2, 0.04)');
+
+      const glowGrad = ctx.createRadialGradient(lightX, lightY, 14, lightX, lightY, torchRadius * 0.92);
+      glowGrad.addColorStop(0, 'rgba(255, 180, 55, 0.40)');
+      glowGrad.addColorStop(0.28, 'rgba(255, 120, 20, 0.24)');
+      glowGrad.addColorStop(0.60, 'rgba(190, 55, 10, 0.10)');
+      glowGrad.addColorStop(0.85, 'rgba(80, 18, 5, 0.03)');
       glowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = glowGrad;
       ctx.beginPath();
-      ctx.arc(lightX, lightY, actualR * 0.9, 0, Math.PI * 2);
+      ctx.arc(lightX, lightY, torchRadius * 0.92, 0, Math.PI * 2);
       ctx.fill();
 
-      // 3. Intrinsic Torch Core
-      const coreGrad = ctx.createRadialGradient(lightX, lightY, 0, lightX, lightY, CELL * 0.7);
-      coreGrad.addColorStop(0, 'rgba(255, 245, 180, 0.48)');
-      coreGrad.addColorStop(0.5, 'rgba(255, 150, 40, 0.20)');
+      // Intrinsic Torch Core
+      const coreGrad = ctx.createRadialGradient(lightX, lightY, 0, lightX, lightY, CELL * 0.65);
+      coreGrad.addColorStop(0, 'rgba(255, 245, 185, 0.45)');
+      coreGrad.addColorStop(0.5, 'rgba(255, 155, 45, 0.18)');
       coreGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = coreGrad;
       ctx.beginPath();
-      ctx.arc(lightX, lightY, CELL * 0.7, 0, Math.PI * 2);
+      ctx.arc(lightX, lightY, CELL * 0.65, 0, Math.PI * 2);
       ctx.fill();
 
       ctx.restore();
@@ -2664,7 +2716,7 @@ if (typeof module !== "undefined" && module.exports) {
       const curMap = WUMPUS_MAPS[selectedMapIndex];
       const gameMapBadge = document.getElementById('game-map-name');
       if (gameMapBadge && curMap) {
-        gameMapBadge.innerText = curMap.id === 0 ? "MAP 00 (AIMA)" : "MAP " + curMap.id.toString().padStart(2, "0");
+        gameMapBadge.innerText = "MAP " + curMap.id.toString().padStart(2, "0");
       }
 
       // Update Perception Ribbons
@@ -2720,7 +2772,7 @@ if (typeof module !== "undefined" && module.exports) {
 
     function showFramedToast(type, text) {
       const t = document.createElement('div');
-      t.className = 'fixed top-12 left-1/2 -translate-x-1/2 z-50 df-frame df-corners px-5 py-3 flex items-center gap-3 shadow-2xl animate-bounce';
+      t.className = 'fixed top-11 left-1/2 -translate-x-1/2 z-50 df-frame df-corners px-3.5 py-1.5 flex items-center gap-2 shadow-2xl text-[8px] md:text-[8.5px] max-w-sm whitespace-nowrap animate-bounce';
 
       let msg = text || '';
       let badge = '';
