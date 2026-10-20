@@ -23,11 +23,16 @@
    - Integrated top status ribbon directly inside the map's rectangular frame (`POS: (x, y)`, `SCORE: 1000`, `ARROWS: 1`, and active Perception cues).
    - Real-time perception indicators (`BREEZE`, `STENCH`, `GLITTER`, `SCREAM`) cleanly docked within the frame.
 
-3. **Handcrafted Procedural RPG Tile Textures**:
-   - Authentic 2D dungeon stone paving with beveled edge highlights, dark mortar joints, weathered cracks, and subtly inscribed `(x, y)` AIMA coordinate markers.
-   - **Pit Chasms**: Craggy stone rim descending into a deep abyssal void with swirling violet mist.
+3. **Handcrafted Procedural & Battlemap RPG Textures**:
+   - Authentic 2D dungeon stone flagstones directly sourced and adapted from medieval battlemap textures with weathered mortar joints and stone cracks.
+   - **Centered Room Coordinates**: Clear engraved coordinate watermarks `(x, y)` centered directly inside each chamber.
+   - **Animated Green Slime Wumpus**: An expressive green pixel slime monster featuring squish-and-stretch breathing animation, bioluminescent slime aura, and a melted puddle pose with `SLAIN` banner when defeated.
+   - **Pit Chasms**: Craggy stone rim descending into a deep abyssal void with swirling violet mist vortex.
    - **Gold Chest**: Handcrafted mahogany chest with gilded gold bands, keyhole, and twinkling star sparkle glints.
-   - **The Ravenous Wumpus**: Fierce beast with glowing predator eyes, fangs, and shaggy fur; slumps into a defeated posture with banner when slain.
+
+4. **Restored Warm Godot-Style 2D Torch Lighting**:
+   - Centered precisely on the player coordinate with multi-stop radial gradient using `'screen'` blend mode.
+   - Vibrant warm orange-gold torch flame casting atmospheric reflections over the medieval stone slabs, enveloped in deep cavern fog of war.
 
 4. **UI Zoom & Scaling Customization**:
    - Built-in UI zoom controls (`SCALE: 80% / 100% / 120%`) with quick hotkeys (`+` / `-` / `0`) for seamless responsive adaptation on any display.

@@ -3,11 +3,16 @@ const fs = require('fs');
 const path = require('path');
 
 const mapsJson = fs.readFileSync('src/maps_data.json', 'utf8');
+const rpgAssetsSrc = fs.readFileSync('src/rpg_assets_b64.js', 'utf8');
 
 function generateHtml(inlineB64 = false) {
-  const b64Tag = inlineB64 
+  const archerB64Tag = inlineB64 
     ? `<script>\n${fs.readFileSync('.superpowers/brainstorm/session/content/archer_b64.js', 'utf8')}\n</script>`
     : `<script src="/files/archer_b64.js"></script>`;
+
+  const rpgB64Tag = inlineB64
+    ? `<script>\n${rpgAssetsSrc}\n</script>`
+    : `<script src="/files/rpg_assets_b64.js"></script>`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -203,7 +208,7 @@ function generateHtml(inlineB64 = false) {
         <div class="w-3.5 h-3.5 bg-amber-400 border border-amber-200 rotate-45 shadow-[0_0_8px_#f59e0b]"></div>
         <div>
           <h1 class="text-[9.5px] lg:text-[11px] text-[#fcedb6] tracking-wider font-bold">WUMPUS WORLD • CELESTIAL CAVERNS</h1>
-          <p class="text-[6.5px] text-sky-200/70 mt-0.5">AIMA CLAUSE RESOLUTION • GODOT 2D LIGHTING • RPG TILES</p>
+          <p class="text-[6.5px] text-sky-200/70 mt-0.5">AIMA CLAUSE RESOLUTION • GODOT 2D LIGHTING • RPG STONE TILES</p>
         </div>
       </div>
 
@@ -371,7 +376,7 @@ function generateHtml(inlineB64 = false) {
           <span id="sense-safe" class="px-2 py-0.5 text-slate-400">NO PERCEPTS (CLEAR AIR)</span>
         </div>
 
-        <!-- 3. CENTERED 4x4 DUNGEON CANVAS (WITH RPG TEXTURES & 2D TORCH LIGHT) -->
+        <!-- 3. CENTERED 4x4 DUNGEON CANVAS (WITH RPG STONE TEXTURES & RESTORED GODOT TORCH LIGHT) -->
         <div class="relative bg-[#03050c] p-1 border-2 border-[var(--df-gold-dark)] shadow-[0_0_20px_rgba(0,0,0,0.9)]">
           <canvas id="gameCanvas" width="480" height="480" class="block cursor-crosshair"></canvas>
         </div>
@@ -666,7 +671,8 @@ function generateHtml(inlineB64 = false) {
     </div>
   </div>
 
-  ${b64Tag}
+  ${archerB64Tag}
+  ${rpgB64Tag}
 
   <script>
     // ==============================================================
@@ -721,7 +727,7 @@ function generateHtml(inlineB64 = false) {
     }
 
     // ==============================================================
-    // 3. SPRITE LOADING (10 INTACT ASSETS)
+    // 3. SPRITE LOADING (ARCHER + GREEN SLIME WUMPUS + STONE TILES)
     // ==============================================================
     const SPRITE_KEYS = ['idle0', 'idle1', 'walk0', 'walk1', 'walk2', 'walk3', 'shoot0', 'shoot1', 'shoot2', 'arrow'];
     const sprites = {};
@@ -731,6 +737,20 @@ function generateHtml(inlineB64 = false) {
       sprites[k].onerror = () => { if (b64) sprites[k].src = b64; };
       sprites[k].src = b64 ? b64 : \`/files/archer_\${k}.png\`;
     });
+
+    // Green Slime Monster Sprite (Image 1)
+    const slimeSprite = new Image();
+    slimeSprite.src = (typeof SLIME_WUMPUS_B64 !== 'undefined') ? SLIME_WUMPUS_B64 : 'src/wumpus_slime_opt.png';
+
+    // Stone Tiles from Medieval Dungeon Battlemap (Image 2)
+    const stoneTiles = [];
+    if (typeof STONE_TILES_B64 !== 'undefined') {
+      STONE_TILES_B64.forEach((b64, idx) => {
+        const img = new Image();
+        img.src = b64;
+        stoneTiles.push(img);
+      });
+    }
 
     // ==============================================================
     // 4. AUTHENTIC 21 AIMA MAPS SPECIFICATION
@@ -1029,58 +1049,58 @@ function generateHtml(inlineB64 = false) {
       updateUI();
     }
 
-    // --- PROCEDURAL RPG DUNGEON DRAWING HELPERS ---
+    // --- PROCEDURAL RPG STONE FLOOR TILES (IMAGE 2 TEXTURE) ---
     function drawRpgFloorTile(cctx, x, y, size, isVisited, col, row) {
-      const isEven = (col + row) % 2 === 0;
-      const baseColor = isEven ? '#121838' : '#162046';
-      const sub = size / 2;
+      const tileIdx = (col * 3 + row * 7) % 4;
+      const tileImg = stoneTiles[tileIdx];
 
-      // Dark mortar joints
-      cctx.fillStyle = '#050814';
-      cctx.fillRect(x, y, size, size);
+      if (tileImg && tileImg.complete && tileImg.naturalWidth > 0) {
+        // Draw real medieval stone dungeon flagstones from Image 2
+        cctx.drawImage(tileImg, x, y, size, size);
 
-      // 4 interlocking stone pavers per cell
-      const offsets = [
-        { dx: 0, dy: 0, w: sub - 1, h: sub - 1 },
-        { dx: sub + 1, dy: 0, w: sub - 1, h: sub - 1 },
-        { dx: 0, dy: sub + 1, w: sub - 1, h: sub - 1 },
-        { dx: sub + 1, dy: sub + 1, w: sub - 1, h: sub - 1 }
-      ];
-
-      for (let i = 0; i < offsets.length; i++) {
-        const o = offsets[i];
-        const sx = x + o.dx;
-        const sy = y + o.dy;
-
-        cctx.fillStyle = isVisited ? baseColor : '#090d20';
-        cctx.fillRect(sx, sy, o.w, o.h);
-
-        // Highlight bevel (Top & Left)
-        cctx.fillStyle = isVisited ? '#222f5e' : '#101730';
-        cctx.fillRect(sx, sy, o.w, 1.5);
-        cctx.fillRect(sx, sy, 1.5, o.h);
-
-        // Shadow bevel (Bottom & Right)
-        cctx.fillStyle = '#060a18';
-        cctx.fillRect(sx, sy + o.h - 1.5, o.w, 1.5);
-        cctx.fillRect(sx + o.w - 1.5, sy, 1.5, o.h);
-
-        // Weathering speckles on visited stones
-        if (isVisited && (col + row + i) % 3 === 0) {
-          cctx.fillStyle = '#0a0f26';
-          cctx.fillRect(sx + 14, sy + 18, 4, 1);
-          cctx.fillRect(sx + 18, sy + 19, 2, 3);
+        if (!isVisited) {
+          // Unvisited rooms: dark fog tint over the stone
+          cctx.fillStyle = 'rgba(4, 6, 16, 0.88)';
+          cctx.fillRect(x, y, size, size);
+        } else {
+          // Visited rooms: subtle stone depth border
+          cctx.fillStyle = 'rgba(255, 235, 170, 0.04)';
+          cctx.fillRect(x, y, size, size);
         }
+      } else {
+        // High-fidelity fallback procedural stone flagstones
+        const isEven = (col + row) % 2 === 0;
+        cctx.fillStyle = isVisited ? (isEven ? '#38322a' : '#453e34') : '#11100e';
+        cctx.fillRect(x, y, size, size);
       }
 
-      // Inscribed AIMA Coordinates at Top-Left of room
+      // Stone mortar boundary lines
+      cctx.strokeStyle = '#18140f';
+      cctx.lineWidth = 1.5;
+      cctx.strokeRect(x, y, size, size);
+
+      // --- CENTERED ROOM COORDINATES (USER DIRECTIVE: TOẠ ĐỘ HIỆN CHÍNH GIỮA) ---
       const aimaX = col + 1;
       const aimaY = 4 - row;
-      cctx.fillStyle = isVisited ? '#415286' : '#1c2647';
-      cctx.font = '6.5px "Press Start 2P"';
-      cctx.fillText(\`(\${aimaX},\${aimaY})\`, x + 5, y + 13);
+      const cx = x + size / 2;
+      const cy = y + size / 2;
+
+      cctx.save();
+      cctx.font = '9px "Press Start 2P"';
+      cctx.textAlign = 'center';
+      cctx.textBaseline = 'middle';
+
+      // Drop shadow for crisp readability against stone floor
+      cctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
+      cctx.fillText(\`(\${aimaX},\${aimaY})\`, cx + 1, cy + 1);
+
+      // Engraved rune stone coordinates
+      cctx.fillStyle = isVisited ? 'rgba(252, 237, 182, 0.40)' : 'rgba(150, 165, 195, 0.16)';
+      cctx.fillText(\`(\${aimaX},\${aimaY})\`, cx, cy);
+      cctx.restore();
     }
 
+    // --- PIT CHASMS (DEEP ABYSSAL VOID) ---
     function drawRpgPit(cctx, x, y, size) {
       const cx = x + size / 2;
       const cy = y + size / 2;
@@ -1108,7 +1128,7 @@ function generateHtml(inlineB64 = false) {
       cctx.arc(cx, cy, r, 0, Math.PI * 2);
       cctx.fill();
 
-      // Jagged stalagmites along the precipice
+      // Stalagmite points along edge
       cctx.fillStyle = '#111833';
       for (let a = 0; a < Math.PI * 2; a += Math.PI / 4) {
         const px = cx + Math.cos(a) * (r - 2);
@@ -1117,6 +1137,7 @@ function generateHtml(inlineB64 = false) {
       }
     }
 
+    // --- GOLD CHEST (WOODEN GILDED TREASURE) ---
     function drawRpgGoldChest(cctx, x, y, size, animTime) {
       const cx = x + size / 2;
       const cy = y + size / 2;
@@ -1161,58 +1182,77 @@ function generateHtml(inlineB64 = false) {
       }
     }
 
+    // --- ANIMATED GREEN SLIME WUMPUS (IMAGE 1 SPRITE) ---
     function drawRpgWumpus(cctx, x, y, size, isAlive, animTime) {
       const cx = x + size / 2;
       const cy = y + size / 2;
 
+      cctx.save();
       if (isAlive) {
-        const breathe = Math.sin(animTime * 4) * 2;
-        // Shaggy Beast Body
-        cctx.fillStyle = '#4c0519';
-        cctx.fillRect(cx - 24, cy - 20 + breathe, 48, 42);
-        cctx.fillStyle = '#831843';
-        cctx.fillRect(cx - 20, cy - 24 + breathe, 40, 10);
-        cctx.fillRect(cx - 26, cy - 8 + breathe, 6, 20);
-        cctx.fillRect(cx + 20, cy - 8 + breathe, 6, 20);
+        // Squish & Stretch Breathing Animation
+        const squish = Math.sin(animTime * 3.8);
+        const scaleX = 1.0 - squish * 0.08;
+        const scaleY = 1.0 + squish * 0.08;
+        const bobY = Math.abs(squish) * 2;
 
-        // Frightening Glowing Eyes
-        cctx.fillStyle = '#fbbf24';
-        cctx.fillRect(cx - 14, cy - 12 + breathe, 7, 5);
-        cctx.fillRect(cx + 7, cy - 12 + breathe, 7, 5);
-        cctx.fillStyle = '#ef4444';
-        cctx.fillRect(cx - 12, cy - 11 + breathe, 3, 3);
-        cctx.fillRect(cx + 9, cy - 11 + breathe, 3, 3);
+        cctx.translate(cx, cy + 6 + bobY);
+        cctx.scale(scaleX, scaleY);
 
-        // Sharp Fangs & Maw
-        cctx.fillStyle = '#000000';
-        cctx.fillRect(cx - 10, cy + 3 + breathe, 20, 8);
-        cctx.fillStyle = '#fef3c7';
-        cctx.fillRect(cx - 8, cy + 3 + breathe, 3, 4);
-        cctx.fillRect(cx - 1, cy + 3 + breathe, 3, 4);
-        cctx.fillRect(cx + 5, cy + 3 + breathe, 3, 4);
+        // Bioluminescent Slime Glow
+        const glow = cctx.createRadialGradient(0, 0, 5, 0, 0, 36);
+        glow.addColorStop(0, 'rgba(74, 222, 128, 0.35)');
+        glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        cctx.fillStyle = glow;
+        cctx.beginPath();
+        cctx.arc(0, 0, 36, 0, Math.PI * 2);
+        cctx.fill();
+
+        // Draw Green Pixel Slime
+        if (slimeSprite && slimeSprite.complete && slimeSprite.naturalWidth > 0) {
+          cctx.drawImage(slimeSprite, -34, -22, 68, 44);
+        } else {
+          // Procedural slime fallback
+          cctx.fillStyle = '#16a34a';
+          cctx.beginPath();
+          cctx.arc(0, 0, 24, 0, Math.PI * 2);
+          cctx.fill();
+        }
       } else {
-        // Slumped Slain Beast Corpse
-        cctx.fillStyle = '#1e293b';
-        cctx.fillRect(cx - 22, cy + 5, 44, 20);
-        cctx.fillStyle = '#0f172a';
-        cctx.fillRect(cx - 25, cy + 18, 50, 8);
+        // Slumped Slain Slime Puddle
+        cctx.translate(cx, cy + 18);
+        cctx.scale(1.35, 0.28);
+        cctx.globalAlpha = 0.75;
+        if (slimeSprite && slimeSprite.complete && slimeSprite.naturalWidth > 0) {
+          cctx.drawImage(slimeSprite, -34, -22, 68, 44);
+        }
+        cctx.restore();
+
+        // Retro Red SLAIN Banner
+        cctx.save();
+        cctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
+        cctx.fillRect(cx - 24, cy - 8, 48, 12);
+        cctx.strokeStyle = '#ef4444';
+        cctx.strokeRect(cx - 24, cy - 8, 48, 12);
         cctx.fillStyle = '#ef4444';
-        cctx.font = '7px "Press Start 2P"';
-        cctx.fillText('SLAIN', cx - 18, cy + 2);
+        cctx.font = '6.5px "Press Start 2P"';
+        cctx.textAlign = 'center';
+        cctx.textBaseline = 'middle';
+        cctx.fillText('SLAIN', cx, cy - 2);
       }
+      cctx.restore();
     }
 
     function render() {
       time += 0.05;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // 1. Render RPG Flagstone Dungeon Tiles & Entities
+      // 1. Render Medieval Dungeon Tiles (Image 2) & Entities
       for (let r = 0; r < 4; r++) {
         for (let c = 0; c < 4; c++) {
           const x = c * CELL; const y = r * CELL;
           const isVis = visited[r][c];
 
-          // Draw procedural RPG Stone Paver Tile
+          // Draw Stone Tile from Image 2 + Centered Coordinates
           drawRpgFloorTile(ctx, x, y, CELL, isVis, c, r);
 
           if (isVis) {
@@ -1349,8 +1389,8 @@ function generateHtml(inlineB64 = false) {
       }
       ctx.restore();
 
-      // 7. Godot-Style 2D Dynamic Radial Torch Lighting (Centered on Player)
-      applyGodotSmoothLighting(ctx, px, py);
+      // 7. RESTORED ORIGINAL GODOT-STYLE 2D SMOOTH TORCH LIGHTING
+      applyGodotSmoothLighting(px, py);
 
       // 8. Floating Golden Dust Motes in Cavern Air
       ctx.save();
@@ -1372,44 +1412,47 @@ function generateHtml(inlineB64 = false) {
       requestAnimationFrame(render);
     }
 
-    // Centered Godot-Style 2D Radial Light Shader
-    function applyGodotSmoothLighting(c, lx, ly) {
-      c.save();
-      c.globalCompositeOperation = 'multiply';
+    // --- RESTORED ORIGINAL GODOT-STYLE 2D SMOOTH TORCH LIGHTING ---
+    function applyGodotSmoothLighting(lightX, lightY) {
+      ctx.save();
+      const radius = CELL * 2.2;
+      const flicker = Math.sin(time * 9) * 4 + Math.cos(time * 15) * 3;
+      const actualR = radius + flicker;
 
-      const flicker = Math.sin(time * 6) * 3 + Math.cos(time * 11) * 2;
-      const torchRadius = 155 + flicker;
+      // 1. Dark darkness overlay outside radius
+      const darkGrad = ctx.createRadialGradient(lightX, lightY, CELL * 0.4, lightX, lightY, actualR);
+      darkGrad.addColorStop(0, 'rgba(5, 7, 20, 0)');
+      darkGrad.addColorStop(0.35, 'rgba(5, 7, 20, 0.30)');
+      darkGrad.addColorStop(0.70, 'rgba(3, 4, 12, 0.85)');
+      darkGrad.addColorStop(1, 'rgba(2, 2, 7, 0.99)');
 
-      const lightGrad = c.createRadialGradient(lx, ly, 15, lx, ly, torchRadius);
-      lightGrad.addColorStop(0, 'rgba(255, 245, 200, 1.0)');
-      lightGrad.addColorStop(0.3, 'rgba(240, 190, 100, 0.95)');
-      lightGrad.addColorStop(0.65, 'rgba(140, 80, 40, 0.55)');
-      lightGrad.addColorStop(1.0, 'rgba(5, 8, 22, 0.05)');
+      ctx.fillStyle = darkGrad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      c.fillStyle = lightGrad;
-      c.fillRect(0, 0, canvas.width, canvas.height);
+      // 2. Warm radial glow centered directly on player (SCREEN blend mode)
+      ctx.globalCompositeOperation = 'screen';
+      const glowGrad = ctx.createRadialGradient(lightX, lightY, 15, lightX, lightY, actualR * 0.9);
+      glowGrad.addColorStop(0, 'rgba(255, 175, 45, 0.42)');
+      glowGrad.addColorStop(0.25, 'rgba(255, 115, 20, 0.26)');
+      glowGrad.addColorStop(0.55, 'rgba(190, 50, 5, 0.12)');
+      glowGrad.addColorStop(0.85, 'rgba(80, 15, 2, 0.04)');
+      glowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = glowGrad;
+      ctx.beginPath();
+      ctx.arc(lightX, lightY, actualR * 0.9, 0, Math.PI * 2);
+      ctx.fill();
 
-      c.globalCompositeOperation = 'source-over';
-      const fogGrad = c.createRadialGradient(lx, ly, torchRadius * 0.65, lx, ly, torchRadius * 1.55);
-      fogGrad.addColorStop(0, 'rgba(0, 0, 0, 0)');
-      fogGrad.addColorStop(0.6, 'rgba(5, 8, 22, 0.7)');
-      fogGrad.addColorStop(1.0, 'rgba(4, 6, 18, 0.96)');
+      // 3. Intrinsic Torch Core
+      const coreGrad = ctx.createRadialGradient(lightX, lightY, 0, lightX, lightY, CELL * 0.7);
+      coreGrad.addColorStop(0, 'rgba(255, 245, 180, 0.48)');
+      coreGrad.addColorStop(0.5, 'rgba(255, 150, 40, 0.20)');
+      coreGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = coreGrad;
+      ctx.beginPath();
+      ctx.arc(lightX, lightY, CELL * 0.7, 0, Math.PI * 2);
+      ctx.fill();
 
-      c.fillStyle = fogGrad;
-      c.fillRect(0, 0, canvas.width, canvas.height);
-
-      for (let r = 0; r < 4; r++) {
-        for (let col = 0; col < 4; col++) {
-          if (!visited[r][col]) {
-            const cellDist = Math.hypot((col + 0.5) * CELL - lx, (r + 0.5) * CELL - ly);
-            if (cellDist > torchRadius) {
-              c.fillStyle = 'rgba(4, 7, 20, 0.96)';
-              c.fillRect(col * CELL, r * CELL, CELL, CELL);
-            }
-          }
-        }
-      }
-      c.restore();
+      ctx.restore();
     }
 
     // --- GAME ACTIONS & MOVEMENT ---
@@ -1669,7 +1712,7 @@ function generateHtml(inlineB64 = false) {
 </html>`;
 }
 
-// Generate companion html (references /files/archer_b64.js)
+// Generate companion html (references /files/archer_b64.js and /files/rpg_assets_b64.js)
 const companionHtml = generateHtml(false);
 fs.writeFileSync('.superpowers/brainstorm/session/content/archer-and-pixel-frames.html', companionHtml, 'utf8');
 
@@ -1678,4 +1721,4 @@ const inlinedHtml = generateHtml(true);
 fs.writeFileSync('/Users/dieptuhuy/.gemini/antigravity/brain/51cdc300-3a2f-4800-8d7e-d056543d88ca/wumpus_preview.html', inlinedHtml, 'utf8');
 fs.writeFileSync('index.html', inlinedHtml, 'utf8');
 
-console.log('Successfully generated centered RPG game across all files!');
+console.log('Successfully generated centered RPG game with restored Godot lighting, centered coordinates, green slime Wumpus animation, and Image 2 stone textures!');
