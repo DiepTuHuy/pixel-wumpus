@@ -1,0 +1,1115 @@
+[
+  {
+    "id": 0,
+    "name": "MAP 00 (AIMA BOOK)",
+    "description": "Canonical AIMA Book Scenario",
+    "aima": {
+      "wumpus": [
+        1,
+        3
+      ],
+      "gold": [
+        2,
+        3
+      ],
+      "pits": [
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 0,
+        "y": 1
+      },
+      "gold": {
+        "x": 1,
+        "y": 1
+      },
+      "pits": [
+        {
+          "x": 2,
+          "y": 3
+        },
+        {
+          "x": 2,
+          "y": 1
+        },
+        {
+          "x": 3,
+          "y": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": 1,
+    "name": "MAP 01",
+    "description": "Expedition Chamber #1",
+    "aima": {
+      "wumpus": [
+        1,
+        3
+      ],
+      "gold": [
+        3,
+        3
+      ],
+      "pits": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 0,
+        "y": 1
+      },
+      "gold": {
+        "x": 2,
+        "y": 1
+      },
+      "pits": [
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 2,
+          "y": 3
+        },
+        {
+          "x": 3,
+          "y": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "name": "MAP 02",
+    "description": "Expedition Chamber #2",
+    "aima": {
+      "wumpus": [
+        4,
+        1
+      ],
+      "gold": [
+        4,
+        2
+      ],
+      "pits": [
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 3,
+        "y": 3
+      },
+      "gold": {
+        "x": 3,
+        "y": 2
+      },
+      "pits": [
+        {
+          "x": 2,
+          "y": 2
+        },
+        {
+          "x": 2,
+          "y": 0
+        },
+        {
+          "x": 3,
+          "y": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "name": "MAP 03",
+    "description": "Expedition Chamber #3",
+    "aima": {
+      "wumpus": [
+        3,
+        3
+      ],
+      "gold": [
+        4,
+        4
+      ],
+      "pits": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          2
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 2,
+        "y": 1
+      },
+      "gold": {
+        "x": 3,
+        "y": 0
+      },
+      "pits": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 2,
+          "y": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "name": "MAP 04",
+    "description": "Expedition Chamber #4",
+    "aima": {
+      "wumpus": [
+        4,
+        2
+      ],
+      "gold": [
+        3,
+        3
+      ],
+      "pits": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 3,
+        "y": 2
+      },
+      "gold": {
+        "x": 2,
+        "y": 1
+      },
+      "pits": [
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 3
+        },
+        {
+          "x": 2,
+          "y": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "name": "MAP 05",
+    "description": "Expedition Chamber #5",
+    "aima": {
+      "wumpus": [
+        1,
+        3
+      ],
+      "gold": [
+        4,
+        3
+      ],
+      "pits": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 0,
+        "y": 1
+      },
+      "gold": {
+        "x": 3,
+        "y": 1
+      },
+      "pits": [
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 3
+        },
+        {
+          "x": 3,
+          "y": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "name": "MAP 06",
+    "description": "Expedition Chamber #6",
+    "aima": {
+      "wumpus": [
+        3,
+        1
+      ],
+      "gold": [
+        3,
+        3
+      ],
+      "pits": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          4,
+          2
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 2,
+        "y": 3
+      },
+      "gold": {
+        "x": 2,
+        "y": 1
+      },
+      "pits": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 2
+        },
+        {
+          "x": 3,
+          "y": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "name": "MAP 07",
+    "description": "Expedition Chamber #7",
+    "aima": {
+      "wumpus": [
+        2,
+        2
+      ],
+      "gold": [
+        3,
+        4
+      ],
+      "pits": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 1,
+        "y": 2
+      },
+      "gold": {
+        "x": 2,
+        "y": 0
+      },
+      "pits": [
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 3
+        },
+        {
+          "x": 3,
+          "y": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "name": "MAP 08",
+    "description": "Expedition Chamber #8",
+    "aima": {
+      "wumpus": [
+        3,
+        1
+      ],
+      "gold": [
+        3,
+        3
+      ],
+      "pits": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          4,
+          2
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 2,
+        "y": 3
+      },
+      "gold": {
+        "x": 2,
+        "y": 1
+      },
+      "pits": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 2
+        },
+        {
+          "x": 3,
+          "y": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "name": "MAP 09",
+    "description": "Expedition Chamber #9",
+    "aima": {
+      "wumpus": [
+        3,
+        2
+      ],
+      "gold": [
+        3,
+        3
+      ],
+      "pits": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 2,
+        "y": 2
+      },
+      "gold": {
+        "x": 2,
+        "y": 1
+      },
+      "pits": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 3,
+          "y": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "name": "MAP 10",
+    "description": "Expedition Chamber #10",
+    "aima": {
+      "wumpus": [
+        3,
+        2
+      ],
+      "gold": [
+        3,
+        3
+      ],
+      "pits": [
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 2,
+        "y": 2
+      },
+      "gold": {
+        "x": 2,
+        "y": 1
+      },
+      "pits": [
+        {
+          "x": 1,
+          "y": 2
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 3,
+          "y": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "name": "MAP 11",
+    "description": "Expedition Chamber #11",
+    "aima": {
+      "wumpus": [
+        2,
+        2
+      ],
+      "gold": [
+        3,
+        2
+      ],
+      "pits": [
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 1,
+        "y": 2
+      },
+      "gold": {
+        "x": 2,
+        "y": 2
+      },
+      "pits": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 1
+        },
+        {
+          "x": 3,
+          "y": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "name": "MAP 12",
+    "description": "Expedition Chamber #12",
+    "aima": {
+      "wumpus": [
+        2,
+        2
+      ],
+      "gold": [
+        3,
+        3
+      ],
+      "pits": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 1,
+        "y": 2
+      },
+      "gold": {
+        "x": 2,
+        "y": 1
+      },
+      "pits": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "name": "MAP 13",
+    "description": "Expedition Chamber #13",
+    "aima": {
+      "wumpus": [
+        2,
+        2
+      ],
+      "gold": [
+        4,
+        4
+      ],
+      "pits": [
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 1,
+        "y": 2
+      },
+      "gold": {
+        "x": 3,
+        "y": 0
+      },
+      "pits": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 3
+        },
+        {
+          "x": 2,
+          "y": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "name": "MAP 14",
+    "description": "Expedition Chamber #14",
+    "aima": {
+      "wumpus": [
+        2,
+        2
+      ],
+      "gold": [
+        4,
+        3
+      ],
+      "pits": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          2
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 1,
+        "y": 2
+      },
+      "gold": {
+        "x": 3,
+        "y": 1
+      },
+      "pits": [
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 3
+        },
+        {
+          "x": 3,
+          "y": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "name": "MAP 15",
+    "description": "Expedition Chamber #15",
+    "aima": {
+      "wumpus": [
+        1,
+        3
+      ],
+      "gold": [
+        1,
+        4
+      ],
+      "pits": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          3
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 0,
+        "y": 1
+      },
+      "gold": {
+        "x": 0,
+        "y": 0
+      },
+      "pits": [
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 2,
+          "y": 3
+        },
+        {
+          "x": 2,
+          "y": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "name": "MAP 16",
+    "description": "Expedition Chamber #16",
+    "aima": {
+      "wumpus": [
+        1,
+        3
+      ],
+      "gold": [
+        2,
+        4
+      ],
+      "pits": [
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 0,
+        "y": 1
+      },
+      "gold": {
+        "x": 1,
+        "y": 0
+      },
+      "pits": [
+        {
+          "x": 1,
+          "y": 2
+        },
+        {
+          "x": 2,
+          "y": 1
+        },
+        {
+          "x": 3,
+          "y": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "name": "MAP 17",
+    "description": "Expedition Chamber #17",
+    "aima": {
+      "wumpus": [
+        3,
+        1
+      ],
+      "gold": [
+        4,
+        1
+      ],
+      "pits": [
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 2,
+        "y": 3
+      },
+      "gold": {
+        "x": 3,
+        "y": 3
+      },
+      "pits": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 1
+        },
+        {
+          "x": 3,
+          "y": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "name": "MAP 18",
+    "description": "Expedition Chamber #18",
+    "aima": {
+      "wumpus": [
+        3,
+        1
+      ],
+      "gold": [
+        4,
+        3
+      ],
+      "pits": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 2,
+        "y": 3
+      },
+      "gold": {
+        "x": 3,
+        "y": 1
+      },
+      "pits": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 2
+        },
+        {
+          "x": 2,
+          "y": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "name": "MAP 19",
+    "description": "Expedition Chamber #19",
+    "aima": {
+      "wumpus": [
+        3,
+        2
+      ],
+      "gold": [
+        3,
+        3
+      ],
+      "pits": [
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 2,
+        "y": 2
+      },
+      "gold": {
+        "x": 2,
+        "y": 1
+      },
+      "pits": [
+        {
+          "x": 1,
+          "y": 2
+        },
+        {
+          "x": 2,
+          "y": 0
+        },
+        {
+          "x": 3,
+          "y": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": 20,
+    "name": "MAP 20",
+    "description": "Expedition Chamber #20",
+    "aima": {
+      "wumpus": [
+        3,
+        2
+      ],
+      "gold": [
+        1,
+        4
+      ],
+      "pits": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    "canvas": {
+      "wumpus": {
+        "x": 2,
+        "y": 2
+      },
+      "gold": {
+        "x": 0,
+        "y": 0
+      },
+      "pits": [
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 3
+        },
+        {
+          "x": 3,
+          "y": 0
+        }
+      ]
+    }
+  }
+]

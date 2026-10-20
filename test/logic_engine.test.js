@@ -102,4 +102,28 @@ console.log("=== RUNNING AIMA LOGIC & GAME STATE TEST SUITE ===");
   console.log("✓ Test 5: Gold grab and victory exit verified");
 }
 
+// 6. Test All 21 Authentic Maps Initialization
+{
+  const maps = require("../src/maps_data.json");
+  assert.strictEqual(maps.length, 21, "There must be exactly 21 authentic maps (0 to 20)");
+
+  maps.forEach(m => {
+    const state = new WumpusGameState({
+      wumpus: m.aima.wumpus,
+      gold: m.aima.gold,
+      pits: m.aima.pits,
+      start: [1, 1]
+    });
+    assert.strictEqual(state.playerPos[0], 1);
+    assert.strictEqual(state.playerPos[1], 1);
+    assert.strictEqual(state.wumpusAlive, true);
+    assert.strictEqual(state.hasGold, false);
+    const isStartPit = m.aima.pits.some(([px, py]) => px === 1 && py === 1);
+    const isStartWumpus = m.aima.wumpus[0] === 1 && m.aima.wumpus[1] === 1;
+    assert.strictEqual(isStartPit, false, `Map ${m.id} start position (1,1) cannot be a Pit`);
+    assert.strictEqual(isStartWumpus, false, `Map ${m.id} start position (1,1) cannot be a Wumpus`);
+  });
+  console.log("✓ Test 6: All 21 authentic AIMA maps verified valid");
+}
+
 console.log("=== ALL AIMA LOGIC & STATE TESTS PASSED ===");

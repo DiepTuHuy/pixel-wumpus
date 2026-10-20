@@ -11,9 +11,11 @@
 
 ## 🌟 Key Features
 
-1. **Atmospheric Dark Fantasy Start Screen**:
+1. **Atmospheric Dark Fantasy Start Screen & Map Selector**:
    - Majestic title banner in antique gold typography (`Press Start 2P`).
    - Dynamic 2D cavern entrance view with an idle breathing archer, central torchlight halo, and floating golden embers.
+   - **Interactive Map Selector (21 Authentic AIMA Maps)**: Choose any map from Map 00 (Canonical AIMA Book Scenario) to Map 20 with real-time pit counts and gold/wumpus preview.
+   - **Map Browser Modal**: Full grid modal to browse and select from all 21 maps with one click.
    - Comprehensive **Rules & Senses** modal and **AIMA Logic Manual** modal.
 
 2. **Godot-Style 2D Dynamic Radial Torch Lighting**:
