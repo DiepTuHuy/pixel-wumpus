@@ -1,11 +1,14 @@
 # Pixel Wumpus World: Caverns of Logic
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-success.svg?style=for-the-badge&logo=github)](https://dieptuhuy.github.io/pixel-wumpus/)
 [![AIMA Propositional Logic](https://img.shields.io/badge/AIMA-Propositional%20Logic-amber.svg)](#aima-theorem-proving--clause-resolution)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![HTML5 Canvas](https://img.shields.io/badge/Engine-HTML5%20Canvas%202D-emerald.svg)](#architecture)
 [![Font: Press Start 2P](https://img.shields.io/badge/Font-Press%20Start%202P-purple.svg)](#visual--aesthetic-design)
 
-> An authentic 2D retro Dark Fantasy adaptation of Russell & Norvig's classic **Wumpus World** (*Artificial Intelligence: A Modern Approach - AIMA*), featuring Godot-style radial torch lighting, high-fidelity pixel archer animation, real-time propositional clause resolution refutation proofs, Web Audio synthesis, and an atmospheric Start Screen.
+> **Play Live on GitHub Pages:** **[https://dieptuhuy.github.io/pixel-wumpus/](https://dieptuhuy.github.io/pixel-wumpus/)**
+
+An authentic 2D retro Dark Fantasy adaptation of Russell & Norvig's classic **Wumpus World** (*Artificial Intelligence: A Modern Approach - AIMA*), featuring Godot-style 2D radial torch lighting with 20% edge feathering, medieval battlemap stone textures, high-fidelity pixel archer walk cycles, real-time propositional clause resolution refutation proofs, Web Audio synthesis, and an atmospheric Start Screen.
 
 ---
 
