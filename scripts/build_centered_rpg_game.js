@@ -47,15 +47,17 @@ function generateHtml(inlineB64 = false) {
       font-family: 'Press Start 2P', monospace !important;
       text-rendering: geometricPrecision;
       -webkit-font-smoothing: none;
+      line-height: 1.6;
     }
 
     body {
       background-color: var(--df-navy-bg);
       color: #cbd5e1;
       margin: 0;
-      padding: 12px;
+      padding: 14px;
       overflow-x: hidden;
       min-height: 100vh;
+      font-size: 11px;
     }
 
     #app-container {
@@ -73,7 +75,7 @@ function generateHtml(inlineB64 = false) {
         inset 0 0 0 3px #060918,
         inset 0 0 0 4.5px var(--df-gold-dark),
         inset 0 0 25px rgba(20, 35, 90, 0.45),
-        0 12px 35px rgba(0, 0, 0, 0.9);
+        0 14px 40px rgba(0, 0, 0, 0.9);
       position: relative;
     }
 
@@ -83,11 +85,11 @@ function generateHtml(inlineB64 = false) {
       content: '';
       position: absolute;
       top: 6px;
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       background: var(--df-gold-bright);
       transform: rotate(45deg);
-      box-shadow: 0 0 5px var(--df-gold-mid), inset 0 0 1px #ffffff;
+      box-shadow: 0 0 6px var(--df-gold-mid), inset 0 0 1px #ffffff;
       pointer-events: none;
       z-index: 5;
     }
@@ -97,31 +99,31 @@ function generateHtml(inlineB64 = false) {
     /* Top & Bottom Finial Badges */
     .df-finial-top {
       position: absolute;
-      top: -9px;
+      top: -10px;
       left: 50%;
       transform: translateX(-50%);
       background: #080d21;
       border: 1.5px solid var(--df-gold-bright);
       color: var(--df-gold-glow);
-      font-size: 7px;
-      padding: 0 4px;
-      line-height: 12px;
-      box-shadow: 0 0 6px var(--df-gold-mid);
+      font-size: 8px;
+      padding: 0 6px;
+      line-height: 14px;
+      box-shadow: 0 0 8px var(--df-gold-mid);
       pointer-events: none;
       z-index: 6;
     }
     .df-finial-bot {
       position: absolute;
-      bottom: -9px;
+      bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
       background: #080d21;
       border: 1.5px solid var(--df-gold-bright);
       color: var(--df-gold-glow);
-      font-size: 7px;
-      padding: 0 4px;
-      line-height: 12px;
-      box-shadow: 0 0 6px var(--df-gold-mid);
+      font-size: 8px;
+      padding: 0 6px;
+      line-height: 14px;
+      box-shadow: 0 0 8px var(--df-gold-mid);
       pointer-events: none;
       z-index: 6;
     }
@@ -135,25 +137,27 @@ function generateHtml(inlineB64 = false) {
     /* Retro Dark Fantasy Button */
     .df-btn {
       background: linear-gradient(180deg, #18234c 0%, #0c1228 100%);
-      border: 1px solid var(--df-gold-dark);
+      border: 1.5px solid var(--df-gold-dark);
       color: #f1f5f9;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.6);
       cursor: pointer;
       transition: all 0.1s;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      padding: 6px 10px;
+      padding: 8px 12px;
+      font-size: 10px;
+      line-height: 1.4;
     }
     .df-btn:hover {
       border-color: var(--df-gold-bright);
       color: var(--df-gold-glow);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 0 8px rgba(232,202,116,0.3);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 0 10px rgba(232,202,116,0.4);
     }
     .df-btn:active, .df-btn.active {
       background: linear-gradient(180deg, #090d1f 0%, #151e42 100%);
       border-color: var(--df-gold-bright);
       color: var(--df-gold-glow);
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(232,202,116,0.4);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(232,202,116,0.5);
     }
 
     .df-btn-emerald {
@@ -164,7 +168,7 @@ function generateHtml(inlineB64 = false) {
     .df-btn-emerald:hover {
       border-color: #34d399;
       color: #ffffff;
-      box-shadow: 0 0 10px rgba(52, 211, 153, 0.4);
+      box-shadow: 0 0 12px rgba(52, 211, 153, 0.45);
     }
 
     .df-btn-amber {
@@ -175,7 +179,7 @@ function generateHtml(inlineB64 = false) {
     .df-btn-amber:hover {
       border-color: #fbbf24;
       color: #ffffff;
-      box-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+      box-shadow: 0 0 12px rgba(251, 191, 36, 0.45);
     }
 
     .df-btn-red {
@@ -186,7 +190,7 @@ function generateHtml(inlineB64 = false) {
     .df-btn-red:hover {
       border-color: #f87171;
       color: #ffffff;
-      box-shadow: 0 0 10px rgba(248, 113, 113, 0.4);
+      box-shadow: 0 0 12px rgba(248, 113, 113, 0.45);
     }
 
     canvas {
@@ -196,47 +200,47 @@ function generateHtml(inlineB64 = false) {
   </style>
 </head>
 <body>
-  <div id="app-container" class="max-w-4xl mx-auto space-y-3.5">
+  <div id="app-container" class="max-w-5xl mx-auto space-y-4">
     <!-- ============================================================== -->
     <!-- GLOBAL HEADER: CELESTIAL NAVY & GOLD                           -->
     <!-- ============================================================== -->
-    <header class="df-frame df-corners p-3 flex flex-wrap items-center justify-between gap-3 relative">
+    <header class="df-frame df-corners p-3.5 flex flex-wrap items-center justify-between gap-3 relative">
       <div class="df-finial-top">▲</div>
       
       <!-- Brand Logo -->
-      <div class="flex items-center gap-2.5 cursor-pointer" onclick="showScreen('title')">
-        <div class="w-3.5 h-3.5 bg-amber-400 border border-amber-200 rotate-45 shadow-[0_0_8px_#f59e0b]"></div>
+      <div class="flex items-center gap-3 cursor-pointer" onclick="showScreen('title')">
+        <div class="w-4 h-4 bg-amber-400 border border-amber-200 rotate-45 shadow-[0_0_10px_#f59e0b]"></div>
         <div>
-          <h1 class="text-[9.5px] lg:text-[11px] text-[#fcedb6] tracking-wider font-bold">WUMPUS WORLD • CELESTIAL CAVERNS</h1>
-          <p class="text-[6.5px] text-sky-200/70 mt-0.5">AIMA CLAUSE RESOLUTION • GODOT 2D LIGHTING • RPG STONE TILES</p>
+          <h1 class="text-[11px] lg:text-[13px] text-[#fcedb6] tracking-wider font-bold">WUMPUS WORLD • CELESTIAL CAVERNS</h1>
+          <p class="text-[8px] lg:text-[9.5px] text-sky-200/80 mt-0.5">AIMA CLAUSE RESOLUTION • GODOT 2D LIGHTING • RPG STONE TILES</p>
         </div>
       </div>
 
       <!-- Navigation & Controls -->
-      <div class="flex flex-wrap items-center gap-2 text-[7px]">
-        <button onclick="showScreen('title')" id="nav-btn-title" class="df-btn py-1 px-2 active">
+      <div class="flex flex-wrap items-center gap-2.5 text-[9px]">
+        <button onclick="showScreen('title')" id="nav-btn-title" class="df-btn py-1.5 px-3 active">
           TITLE MENU
         </button>
-        <button onclick="showScreen('game')" id="nav-btn-game" class="df-btn py-1 px-2">
+        <button onclick="showScreen('game')" id="nav-btn-game" class="df-btn py-1.5 px-3">
           EXPEDITION
         </button>
-        <button onclick="openRulesModal()" class="df-btn py-1 px-2">
+        <button onclick="openRulesModal()" class="df-btn py-1.5 px-3">
           RULES
         </button>
-        <button onclick="openLogicManualModal()" class="df-btn py-1 px-2">
+        <button onclick="openLogicManualModal()" class="df-btn py-1.5 px-3">
           AIMA MANUAL
         </button>
 
         <!-- UI Zoom Controls -->
-        <div class="flex items-center gap-1 bg-[#060a1d] border border-[#202952] px-1.5 py-0.5">
-          <span class="text-[6px] text-slate-400">ZOOM:</span>
-          <button onclick="zoomUi(-0.1)" class="df-btn px-1 py-0.5 text-[6.5px]" title="Zoom Out (-)">-</button>
-          <span id="zoom-badge" class="text-[6.5px] text-[#fcedb6] font-bold px-1">100%</span>
-          <button onclick="zoomUi(0.1)" class="df-btn px-1 py-0.5 text-[6.5px]" title="Zoom In (+)">+</button>
-          <button onclick="setUiScale(1.0)" class="df-btn px-1 py-0.5 text-[6px] text-slate-300" title="Reset (0)">RESET</button>
+        <div class="flex items-center gap-1.5 bg-[#060a1d] border border-[#202952] px-2 py-1">
+          <span class="text-[8px] text-slate-400 font-bold">ZOOM:</span>
+          <button onclick="zoomUi(-0.1)" class="df-btn px-1.5 py-0.5 text-[9px] font-bold" title="Zoom Out (-)">-</button>
+          <span id="zoom-badge" class="text-[9px] text-[#fcedb6] font-bold px-1.5">100%</span>
+          <button onclick="zoomUi(0.1)" class="df-btn px-1.5 py-0.5 text-[9px] font-bold" title="Zoom In (+)">+</button>
+          <button onclick="setUiScale(1.0)" class="df-btn px-1.5 py-0.5 text-[7.5px] text-slate-300" title="Reset (0)">RESET</button>
         </div>
 
-        <button onclick="toggleAudio()" id="btn-audio" class="df-btn py-1 px-2">
+        <button onclick="toggleAudio()" id="btn-audio" class="df-btn py-1.5 px-3">
           AUDIO: ON
         </button>
       </div>
@@ -245,89 +249,89 @@ function generateHtml(inlineB64 = false) {
     <!-- ============================================================== -->
     <!-- SCREEN 1: START SCREEN (TITLE, MAP SELECTOR, CAVERN VIEW)      -->
     <!-- ============================================================== -->
-    <section id="screen-title" class="df-frame df-corners p-5 relative max-w-2xl mx-auto flex flex-col items-center justify-center text-center space-y-4">
+    <section id="screen-title" class="df-frame df-corners p-6 relative max-w-2xl mx-auto flex flex-col items-center justify-center text-center space-y-5">
       <div class="df-finial-top">▲</div>
       <div class="df-finial-bot">▼</div>
 
-      <div class="space-y-1.5 mt-1">
-        <div class="inline-block px-3 py-1 bg-[#0b1335] border border-[var(--df-gold-dark)] text-[#fcedb6] text-[6.5px] tracking-widest uppercase">
+      <div class="space-y-2 mt-1">
+        <div class="inline-block px-3.5 py-1.5 bg-[#0b1335] border border-[var(--df-gold-dark)] text-[#fcedb6] text-[8.5px] tracking-widest uppercase">
           Artificial Intelligence: A Modern Approach
         </div>
-        <h1 class="text-xl md:text-2xl text-[#fcedb6] tracking-widest font-bold filter drop-shadow-[0_0_12px_#e8ca74] pt-1">
+        <h1 class="text-2xl md:text-3xl text-[#fcedb6] tracking-widest font-bold filter drop-shadow-[0_0_15px_#e8ca74] pt-1">
           WUMPUS WORLD
         </h1>
-        <h2 class="text-[7.5px] md:text-[9px] text-sky-300 tracking-wider font-bold">
+        <h2 class="text-[9.5px] md:text-[11.5px] text-sky-300 tracking-wider font-bold">
           CAVERNS OF LOGIC • PROPOSITIONAL RESOLUTION
         </h2>
       </div>
 
       <!-- Cavern Entrance Canvas Centerpiece -->
       <div class="relative group">
-        <div class="p-1.5 bg-[#060a1d] border-2 border-[var(--df-gold-dark)] shadow-[0_0_25px_rgba(232,202,116,0.15)] inline-block">
+        <div class="p-2 bg-[#060a1d] border-2 border-[var(--df-gold-dark)] shadow-[0_0_30px_rgba(232,202,116,0.18)] inline-block">
           <canvas id="titleCanvas" width="340" height="220" class="block bg-[#050816]"></canvas>
         </div>
-        <div class="absolute bottom-2.5 left-0 right-0 text-center pointer-events-none">
-          <span class="inline-block px-2 py-0.5 bg-black/80 border border-[#202952] text-[#fcedb6] text-[6px] tracking-wider animate-pulse">
+        <div class="absolute bottom-3 left-0 right-0 text-center pointer-events-none">
+          <span class="inline-block px-3 py-1 bg-black/85 border border-[#202952] text-[#fcedb6] text-[7.5px] tracking-wider animate-pulse">
             TORCHLIGHT ILLUMINATING CAVERN ENTRANCE
           </span>
         </div>
       </div>
 
       <!-- Map Selection Carousel & Browser -->
-      <div class="df-frame df-corners p-3 w-full max-w-md relative bg-[#060b24]">
+      <div class="df-frame df-corners p-4 w-full max-w-lg relative bg-[#060b24]">
         <div class="df-finial-top">▲</div>
-        <div class="flex items-center justify-between border-b border-[#1b2554] pb-1.5 mb-2">
-          <div class="text-[7px] text-[#fcedb6] font-bold tracking-wider">
+        <div class="flex items-center justify-between border-b border-[#1b2554] pb-2 mb-3">
+          <div class="text-[9px] text-[#fcedb6] font-bold tracking-wider">
             EXPEDITION MAP (00 - 20)
           </div>
-          <button onclick="openMapBrowserModal()" class="df-btn text-[6.5px] py-1 px-2 text-sky-300">
+          <button onclick="openMapBrowserModal()" class="df-btn text-[8px] py-1 px-2.5 text-sky-300">
             BROWSE ALL 21 MAPS
           </button>
         </div>
 
-        <div class="flex items-center justify-between gap-2">
-          <button onclick="changeMap(-1)" class="df-btn text-[8px] py-2 px-2.5 font-bold" id="btn-prev-map">
+        <div class="flex items-center justify-between gap-3">
+          <button onclick="changeMap(-1)" class="df-btn text-[11px] py-2 px-3 font-bold" id="btn-prev-map">
             ◄
           </button>
 
-          <div class="flex-1 df-inset p-2 text-center space-y-1">
-            <div class="text-[8px] text-[#fcedb6] font-bold tracking-wider" id="title-map-name">
+          <div class="flex-1 df-inset p-2.5 text-center space-y-1.5">
+            <div class="text-[10.5px] md:text-[12px] text-[#fcedb6] font-bold tracking-wider" id="title-map-name">
               MAP 00 (AIMA BOOK)
             </div>
-            <div class="text-[6.5px] text-sky-200/80 truncate" id="title-map-desc">
+            <div class="text-[8px] md:text-[9px] text-sky-200/90 truncate" id="title-map-desc">
               Canonical AIMA Book Scenario
             </div>
-            <div class="flex justify-center items-center gap-3 text-[6.5px] text-slate-300 pt-0.5">
+            <div class="flex justify-center items-center gap-4 text-[8px] md:text-[9px] text-slate-300 pt-1 border-t border-[#151f47]">
               <span class="text-rose-300">PITS: <b id="title-map-pits" class="text-white">3</b></span>
               <span class="text-amber-300">GOLD: <b id="title-map-gold" class="text-white">(2, 3)</b></span>
               <span class="text-purple-300">WUMPUS: <b id="title-map-wumpus" class="text-white">(1, 3)</b></span>
             </div>
           </div>
 
-          <button onclick="changeMap(1)" class="df-btn text-[8px] py-2 px-2.5 font-bold" id="btn-next-map">
+          <button onclick="changeMap(1)" class="df-btn text-[11px] py-2 px-3 font-bold" id="btn-next-map">
             ►
           </button>
         </div>
       </div>
 
       <!-- Main Action Menu -->
-      <div class="w-full max-w-md space-y-2 pt-1">
-        <button onclick="showScreen('game'); playSfx(440, 'triangle', 0.2, 0.2, 880);" class="df-btn df-btn-emerald w-full py-2.5 text-[8.5px] tracking-widest font-bold shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-[1.01] transition-transform">
+      <div class="w-full max-w-lg space-y-2.5 pt-1">
+        <button onclick="showScreen('game'); playSfx(440, 'triangle', 0.2, 0.2, 880);" class="df-btn df-btn-emerald w-full py-3.5 text-[11px] md:text-[12.5px] tracking-widest font-bold shadow-[0_0_18px_rgba(16,185,129,0.35)] hover:scale-[1.01] transition-transform">
           [ ◄ ENTER CAVERN (START EXPEDITION) ► ]
         </button>
-        <div class="grid grid-cols-2 gap-2">
-          <button onclick="openRulesModal()" class="df-btn w-full py-2 text-[7px]">
+        <div class="grid grid-cols-2 gap-2.5">
+          <button onclick="openRulesModal()" class="df-btn w-full py-2.5 text-[9.5px]">
             RULES & SENSES
           </button>
-          <button onclick="openLogicManualModal()" class="df-btn w-full py-2 text-[7px]">
+          <button onclick="openLogicManualModal()" class="df-btn w-full py-2.5 text-[9.5px]">
             AIMA LOGIC MANUAL
           </button>
         </div>
       </div>
 
       <!-- Quick Key Guide -->
-      <div class="df-inset p-2 w-full max-w-md text-slate-400 text-[6.5px] leading-relaxed flex flex-wrap justify-around items-center gap-2">
-        <span><b class="text-[#fcedb6]">[SPACE / ENTER]</b> START</span>
+      <div class="df-inset p-2.5 w-full max-w-lg text-slate-300 text-[8px] md:text-[9px] leading-relaxed flex flex-wrap justify-around items-center gap-2">
+        <span><b class="text-[#fcedb6]">[SPACE/ENTER]</b> START</span>
         <span><b class="text-[#fcedb6]">[H]</b> RULES</span>
         <span><b class="text-[#fcedb6]">[M]</b> MANUAL</span>
         <span><b class="text-[#fcedb6]">[+/-]</b> ZOOM</span>
@@ -337,78 +341,78 @@ function generateHtml(inlineB64 = false) {
     <!-- ============================================================== -->
     <!-- SCREEN 2: GAMEPLAY EXPEDITION (CENTERED MAP & INTEGRATED HUD) -->
     <!-- ============================================================== -->
-    <section id="screen-game" class="max-w-xl mx-auto space-y-3 hidden">
+    <section id="screen-game" class="max-w-2xl mx-auto space-y-3.5 hidden">
       <!-- THE RECTANGULAR MAP CONTAINER -->
-      <div class="df-frame df-corners p-3 relative w-full flex flex-col items-center">
+      <div class="df-frame df-corners p-3.5 relative w-full flex flex-col items-center">
         <div class="df-finial-top">▲</div>
         <div class="df-finial-bot">▼</div>
 
         <!-- 1. INTEGRATED STATUS RIBBON (INSIDE THE MAP RECTANGLE) -->
-        <div class="w-full flex flex-wrap items-center justify-between gap-2 pb-2 mb-2 border-b border-[#1b2554]">
-          <div class="df-inset px-2.5 py-1 text-[7.5px] text-[#fcedb6] font-bold">
-            POS: <span id="pos-stat" class="text-white">(1, 1)</span>
+        <div class="w-full flex flex-wrap items-center justify-between gap-2 pb-2.5 mb-2 border-b border-[#1b2554]">
+          <div class="df-inset px-3 py-1.5 text-[10px] md:text-[11.5px] text-[#fcedb6] font-bold">
+            POS: <span id="pos-stat" class="text-white text-[11.5px] md:text-[13px]">(1, 1)</span>
           </div>
 
           <!-- Map Switcher inside Map Rectangle -->
-          <div class="flex items-center gap-1 bg-[#060a1d] border border-[#202952] px-2 py-0.5">
-            <button onclick="changeMap(-1)" class="text-[7.5px] text-[#fcedb6] hover:text-white px-1">◄</button>
-            <span id="game-map-name" class="text-[7px] text-[#fcedb6] font-bold px-1">MAP 00</span>
-            <button onclick="changeMap(1)" class="text-[7.5px] text-[#fcedb6] hover:text-white px-1">►</button>
+          <div class="flex items-center gap-1.5 bg-[#060a1d] border border-[#202952] px-2.5 py-1">
+            <button onclick="changeMap(-1)" class="text-[10px] text-[#fcedb6] hover:text-white px-1">◄</button>
+            <span id="game-map-name" class="text-[10px] md:text-[11px] text-[#fcedb6] font-bold px-1.5">MAP 00</span>
+            <button onclick="changeMap(1)" class="text-[10px] text-[#fcedb6] hover:text-white px-1">►</button>
           </div>
 
-          <div class="flex items-center gap-2 text-[7.5px]">
-            <div class="df-inset px-2.5 py-1 text-emerald-400 font-bold">
-              SCORE: <span id="score-stat" class="text-white">1000</span>
+          <div class="flex items-center gap-2.5 text-[10px] md:text-[11.5px]">
+            <div class="df-inset px-3 py-1.5 text-emerald-400 font-bold">
+              SCORE: <span id="score-stat" class="text-white text-[11.5px] md:text-[13px]">1000</span>
             </div>
-            <div class="df-inset px-2 py-1 text-amber-300 font-bold" id="arrow-count-badge">
+            <div class="df-inset px-3 py-1.5 text-amber-300 font-bold" id="arrow-count-badge">
               ARROWS: 1
             </div>
           </div>
         </div>
 
         <!-- 2. PERCEPTIONS RIBBON (INSIDE THE MAP RECTANGLE) -->
-        <div id="senses-ribbon" class="w-full flex flex-wrap items-center justify-center gap-1.5 py-1 px-2 mb-2.5 bg-[#050818] border border-[#18234c] text-[6.5px]">
-          <span class="text-slate-400 mr-1">PERCEPTS:</span>
-          <span id="sense-breeze" class="px-2 py-0.5 bg-sky-950 text-sky-300 border border-sky-600 hidden font-bold">BREEZE</span>
-          <span id="sense-stench" class="px-2 py-0.5 bg-emerald-950 text-emerald-300 border border-emerald-600 hidden font-bold">STENCH</span>
-          <span id="sense-glitter" class="px-2 py-0.5 bg-amber-950 text-amber-300 border border-amber-500 animate-pulse hidden font-bold">GLITTER</span>
-          <span id="sense-scream" class="px-2 py-0.5 bg-rose-950 text-rose-300 border border-rose-600 hidden font-bold">SCREAM</span>
-          <span id="sense-safe" class="px-2 py-0.5 text-slate-400">NO PERCEPTS (CLEAR AIR)</span>
+        <div id="senses-ribbon" class="w-full flex flex-wrap items-center justify-center gap-2 py-1.5 px-2.5 mb-3 bg-[#050818] border border-[#18234c] text-[8.5px] md:text-[9.5px]">
+          <span class="text-slate-400 mr-1 font-bold">PERCEPTS:</span>
+          <span id="sense-breeze" class="px-2.5 py-1 bg-sky-950 text-sky-300 border border-sky-600 hidden font-bold">BREEZE</span>
+          <span id="sense-stench" class="px-2.5 py-1 bg-emerald-950 text-emerald-300 border border-emerald-600 hidden font-bold">STENCH</span>
+          <span id="sense-glitter" class="px-2.5 py-1 bg-amber-950 text-amber-300 border border-amber-500 animate-pulse hidden font-bold">GLITTER</span>
+          <span id="sense-scream" class="px-2.5 py-1 bg-rose-950 text-rose-300 border border-rose-600 hidden font-bold">SCREAM</span>
+          <span id="sense-safe" class="px-2.5 py-1 text-slate-300 font-bold">NO PERCEPTS (CLEAR AIR)</span>
         </div>
 
         <!-- 3. CENTERED 4x4 DUNGEON CANVAS (WITH RPG STONE TEXTURES & RESTORED GODOT TORCH LIGHT) -->
-        <div class="relative bg-[#03050c] p-1 border-2 border-[var(--df-gold-dark)] shadow-[0_0_20px_rgba(0,0,0,0.9)]">
+        <div class="relative bg-[#03050c] p-1 border-2 border-[var(--df-gold-dark)] shadow-[0_0_25px_rgba(0,0,0,0.95)]">
           <canvas id="gameCanvas" width="480" height="480" class="block cursor-crosshair"></canvas>
         </div>
 
         <!-- 4. ACTION & MOVEMENT CONTROLS (DOCKED INSIDE MAP RECTANGLE) -->
-        <div class="w-full pt-2.5 mt-2.5 border-t border-[#1b2554] flex flex-wrap items-center justify-between gap-2.5">
+        <div class="w-full pt-3 mt-3 border-t border-[#1b2554] flex flex-wrap items-center justify-between gap-3">
           <!-- Left Action Buttons -->
-          <div class="flex flex-col gap-1.5">
-            <button onclick="triggerGrab()" class="df-btn df-btn-amber text-[7px] py-1.5 px-3">
+          <div class="flex flex-col gap-2">
+            <button onclick="triggerGrab()" class="df-btn df-btn-amber text-[9.5px] py-2.5 px-3.5">
               GRAB GOLD
             </button>
-            <button onclick="triggerClimbUp()" class="df-btn df-btn-emerald text-[7px] py-1.5 px-3">
+            <button onclick="triggerClimbUp()" class="df-btn df-btn-emerald text-[9.5px] py-2.5 px-3.5">
               CLIMB EXIT (1,1)
             </button>
           </div>
 
           <!-- Center Directional D-Pad -->
-          <div class="grid grid-cols-3 gap-1 w-28">
+          <div class="grid grid-cols-3 gap-1.5 w-32">
             <div></div>
-            <button onclick="movePlayer(0, -1)" class="df-btn py-2 text-[8px] font-bold text-center" title="North (W / ▲)">▲</button>
+            <button onclick="movePlayer(0, -1)" class="df-btn py-2.5 text-[12px] font-bold text-center" title="North (W / ▲)">▲</button>
             <div></div>
-            <button onclick="movePlayer(-1, 0)" class="df-btn py-2 text-[8px] font-bold text-center" title="West (A / ◄)">◄</button>
-            <button onclick="movePlayer(0, 1)" class="df-btn py-2 text-[8px] font-bold text-center" title="South (S / ▼)">▼</button>
-            <button onclick="movePlayer(1, 0)" class="df-btn py-2 text-[8px] font-bold text-center" title="East (D / ►)">►</button>
+            <button onclick="movePlayer(-1, 0)" class="df-btn py-2.5 text-[12px] font-bold text-center" title="West (A / ◄)">◄</button>
+            <button onclick="movePlayer(0, 1)" class="df-btn py-2.5 text-[12px] font-bold text-center" title="South (S / ▼)">▼</button>
+            <button onclick="movePlayer(1, 0)" class="df-btn py-2.5 text-[12px] font-bold text-center" title="East (D / ►)">►</button>
           </div>
 
           <!-- Right Action Buttons -->
-          <div class="flex flex-col gap-1.5">
-            <button onclick="triggerShoot('UP')" class="df-btn text-[7px] py-1.5 px-3 text-sky-200 border-sky-600">
+          <div class="flex flex-col gap-2">
+            <button onclick="triggerShoot('UP')" class="df-btn text-[9.5px] py-2.5 px-3.5 text-sky-200 border-sky-600">
               SHOOT ARROW
             </button>
-            <button onclick="resetGame()" class="df-btn text-[7px] py-1.5 px-3 text-slate-300">
+            <button onclick="resetGame()" class="df-btn text-[9.5px] py-2.5 px-3.5 text-slate-300">
               RESTART MAP
             </button>
           </div>
@@ -416,23 +420,23 @@ function generateHtml(inlineB64 = false) {
       </div>
 
       <!-- 5. AIMA CLAUSE RESOLUTION INFERENCE LOG (CENTERED BELOW MAP) -->
-      <div class="df-frame df-corners p-3 w-full relative">
-        <div class="flex items-center justify-between border-b border-[#1b2554] pb-1.5 mb-2">
+      <div class="df-frame df-corners p-4 w-full relative">
+        <div class="flex items-center justify-between border-b border-[#1b2554] pb-2 mb-2.5">
           <div class="flex items-center gap-2">
-            <div class="w-2.5 h-2.5 bg-amber-400 rotate-45"></div>
-            <span class="text-[7.5px] text-[#fcedb6] font-bold tracking-wider">AIMA CLAUSE RESOLUTION LOG</span>
+            <div class="w-3 h-3 bg-amber-400 rotate-45"></div>
+            <span class="text-[9.5px] md:text-[11px] text-[#fcedb6] font-bold tracking-wider">AIMA CLAUSE RESOLUTION LOG</span>
           </div>
-          <button onclick="openMathProofFromVictory()" class="df-btn text-[6.5px] py-0.5 px-2 text-sky-300">
+          <button onclick="openMathProofFromVictory()" class="df-btn text-[8.5px] py-1 px-2.5 text-sky-300">
             FULL GRIMOIRE
           </button>
         </div>
-        <div id="proof-stream" class="overflow-y-auto max-h-[130px] space-y-1.5 pr-1 text-[7px]">
+        <div id="proof-stream" class="overflow-y-auto max-h-[150px] space-y-2 pr-1 text-[9px] md:text-[10px]">
           <!-- Real-time AIMA refutation proofs -->
         </div>
-        <div class="pt-2 mt-2 border-t border-[#1b2554] flex justify-between items-center text-[7px]">
-          <button onclick="showScreen('title')" class="df-btn text-[7px] py-1">◄ TITLE MENU</button>
+        <div class="pt-2.5 mt-2.5 border-t border-[#1b2554] flex justify-between items-center text-[9px]">
+          <button onclick="showScreen('title')" class="df-btn text-[9px] py-1.5 px-3">◄ TITLE MENU</button>
           <div class="flex items-center gap-2">
-            <button onclick="changeMap(1)" class="df-btn df-btn-emerald text-[7px] py-1">NEXT MAP ►</button>
+            <button onclick="changeMap(1)" class="df-btn df-btn-emerald text-[9px] py-1.5 px-3">NEXT MAP ►</button>
           </div>
         </div>
       </div>
@@ -445,47 +449,47 @@ function generateHtml(inlineB64 = false) {
 
   <!-- MODAL: MAP BROWSER (ALL 21 AIMA MAPS) -->
   <div id="map-browser-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
-    <div class="df-frame df-corners p-5 max-w-2xl w-full space-y-4 relative border-2 border-[var(--df-gold-mid)]">
+    <div class="df-frame df-corners p-6 max-w-2xl w-full space-y-4 relative border-2 border-[var(--df-gold-mid)]">
       <div class="df-finial-top">▲</div>
       <div class="df-finial-bot">▼</div>
 
-      <div class="flex items-center justify-between border-b border-[#202952] pb-2">
-        <div class="flex items-center gap-2">
-          <div class="w-3 h-3 bg-amber-400 rotate-45"></div>
-          <h3 class="text-[9px] text-[#fcedb6] font-bold tracking-wider">SELECT FROM 21 AIMA CAVERN MAPS</h3>
+      <div class="flex items-center justify-between border-b border-[#202952] pb-2.5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-3.5 h-3.5 bg-amber-400 rotate-45"></div>
+          <h3 class="text-[11px] md:text-[12px] text-[#fcedb6] font-bold tracking-wider">SELECT FROM 21 AIMA CAVERN MAPS</h3>
         </div>
-        <button onclick="closeMapBrowserModal()" class="df-btn text-[7.5px] px-2 py-0.5">X</button>
+        <button onclick="closeMapBrowserModal()" class="df-btn text-[10px] px-2.5 py-1">X</button>
       </div>
 
-      <div id="map-cards-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-[55vh] overflow-y-auto pr-1">
+      <div id="map-cards-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-[55vh] overflow-y-auto pr-1">
         <!-- Populated dynamically via JS -->
       </div>
 
-      <div class="pt-2 border-t border-[#202952] flex justify-between items-center text-[6.5px] text-slate-400">
+      <div class="pt-3 border-t border-[#202952] flex justify-between items-center text-[8.5px] text-slate-300">
         <span>CLICK ANY MAP TO LOAD IMMEDIATELY</span>
-        <button onclick="closeMapBrowserModal()" class="df-btn text-[7.5px]">CLOSE</button>
+        <button onclick="closeMapBrowserModal()" class="df-btn text-[10px] py-1.5 px-3">CLOSE</button>
       </div>
     </div>
   </div>
 
   <!-- MODAL: RULES & PERCEPTIONS -->
   <div id="rules-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
-    <div class="df-frame df-corners p-5 max-w-lg w-full space-y-4 relative border-2 border-[var(--df-gold-mid)]">
+    <div class="df-frame df-corners p-6 max-w-lg w-full space-y-4 relative border-2 border-[var(--df-gold-mid)]">
       <div class="df-finial-top">▲</div>
       <div class="df-finial-bot">▼</div>
 
-      <div class="flex items-center justify-between border-b border-[#202952] pb-2">
-        <div class="flex items-center gap-2">
-          <div class="w-3 h-3 bg-amber-400 rotate-45"></div>
-          <h3 class="text-[9px] text-[#fcedb6] font-bold tracking-wider">CAVERN RULES & PERCEPTION CUES</h3>
+      <div class="flex items-center justify-between border-b border-[#202952] pb-2.5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-3.5 h-3.5 bg-amber-400 rotate-45"></div>
+          <h3 class="text-[11px] md:text-[12px] text-[#fcedb6] font-bold tracking-wider">CAVERN RULES & PERCEPTION CUES</h3>
         </div>
-        <button onclick="closeRulesModal()" class="df-btn text-[7.5px] px-2 py-0.5">X</button>
+        <button onclick="closeRulesModal()" class="df-btn text-[10px] px-2.5 py-1">X</button>
       </div>
 
-      <div class="space-y-3 text-[7.5px] leading-relaxed text-slate-300 max-h-[60vh] overflow-y-auto pr-1">
+      <div class="space-y-3.5 text-[9.5px] md:text-[10.5px] leading-relaxed text-slate-200 max-h-[60vh] overflow-y-auto pr-1">
         <div>
-          <div class="text-[#fcedb6] font-bold mb-1">1. SENSES & PERCEPTIONS</div>
-          <div class="df-inset p-2 space-y-1">
+          <div class="text-[#fcedb6] font-bold mb-1.5">1. SENSES & PERCEPTIONS</div>
+          <div class="df-inset p-3 space-y-1.5">
             <div><b class="text-sky-300">BREEZE:</b> Chilly draft felt in rooms directly adjacent (orthogonal) to a bottomless Pit.</div>
             <div><b class="text-emerald-400">STENCH:</b> Putrid stench in rooms directly adjacent to the ravenous Wumpus.</div>
             <div><b class="text-amber-300">GLITTER:</b> Shimmering radiance in the room containing the Gold chest.</div>
@@ -495,8 +499,8 @@ function generateHtml(inlineB64 = false) {
         </div>
 
         <div>
-          <div class="text-[#fcedb6] font-bold mb-1">2. SCORING & ACTION COSTS</div>
-          <div class="df-inset p-2 space-y-1">
+          <div class="text-[#fcedb6] font-bold mb-1.5">2. SCORING & ACTION COSTS</div>
+          <div class="df-inset p-3 space-y-1.5">
             <div><b class="text-slate-100">STARTING SCORE:</b> 1000 points.</div>
             <div><b class="text-amber-400">STEP / TURN:</b> -1 point per action.</div>
             <div><b class="text-amber-400">SHOOT ARROW:</b> -10 points (only 1 arrow equipped).</div>
@@ -507,30 +511,30 @@ function generateHtml(inlineB64 = false) {
         </div>
       </div>
 
-      <div class="pt-2 border-t border-[#202952] flex justify-end">
-        <button onclick="closeRulesModal()" class="df-btn df-btn-emerald text-[7.5px]">UNDERSTOOD</button>
+      <div class="pt-3 border-t border-[#202952] flex justify-end">
+        <button onclick="closeRulesModal()" class="df-btn df-btn-emerald text-[10px] py-2 px-3.5">UNDERSTOOD</button>
       </div>
     </div>
   </div>
 
   <!-- MODAL: AIMA LOGIC MANUAL -->
   <div id="logic-manual-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
-    <div class="df-frame df-corners p-5 max-w-xl w-full space-y-4 relative border-2 border-[var(--df-gold-mid)]">
+    <div class="df-frame df-corners p-6 max-w-xl w-full space-y-4 relative border-2 border-[var(--df-gold-mid)]">
       <div class="df-finial-top">▲</div>
       <div class="df-finial-bot">▼</div>
 
-      <div class="flex items-center justify-between border-b border-[#202952] pb-2">
-        <div class="flex items-center gap-2">
-          <div class="w-3 h-3 bg-amber-400 rotate-45"></div>
-          <h3 class="text-[9px] text-[#fcedb6] font-bold tracking-wider">AIMA CLAUSE RESOLUTION MANUAL</h3>
+      <div class="flex items-center justify-between border-b border-[#202952] pb-2.5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-3.5 h-3.5 bg-amber-400 rotate-45"></div>
+          <h3 class="text-[11px] md:text-[12px] text-[#fcedb6] font-bold tracking-wider">AIMA CLAUSE RESOLUTION MANUAL</h3>
         </div>
-        <button onclick="closeLogicManualModal()" class="df-btn text-[7.5px] px-2 py-0.5">X</button>
+        <button onclick="closeLogicManualModal()" class="df-btn text-[10px] px-2.5 py-1">X</button>
       </div>
 
-      <div class="space-y-3 text-[7.5px] leading-relaxed text-slate-300 max-h-[60vh] overflow-y-auto pr-1">
+      <div class="space-y-3.5 text-[9.5px] md:text-[10.5px] leading-relaxed text-slate-200 max-h-[60vh] overflow-y-auto pr-1">
         <div>
-          <div class="text-[#fcedb6] font-bold mb-1">1. THE PROPOSITIONAL KNOWLEDGE BASE</div>
-          <div class="df-inset p-2 space-y-1">
+          <div class="text-[#fcedb6] font-bold mb-1.5">1. THE PROPOSITIONAL KNOWLEDGE BASE</div>
+          <div class="df-inset p-3 space-y-1.5">
             <div>Every room (x,y) contains propositions: P(x,y) [Pit], W(x,y) [Wumpus], B(x,y) [Breeze], S(x,y) [Stench].</div>
             <div>Axioms: B(x,y) <=> Or(P_adj) and S(x,y) <=> Or(W_adj).</div>
             <div>Safe Room Definition: OK(x,y) <=> Not P(x,y) And Not W(x,y).</div>
@@ -538,8 +542,8 @@ function generateHtml(inlineB64 = false) {
         </div>
 
         <div>
-          <div class="text-[#fcedb6] font-bold mb-1">2. REFUTATION RESOLUTION PROOF (KB And Not Alpha |- EmptyClause)</div>
-          <div class="df-inset p-2 space-y-1">
+          <div class="text-[#fcedb6] font-bold mb-1.5">2. REFUTATION RESOLUTION PROOF (KB And Not Alpha |- EmptyClause)</div>
+          <div class="df-inset p-3 space-y-1.5">
             <div>To verify if cell (x,y) is Safe, we assume the negation: (P(x,y) Or W(x,y)).</div>
             <div>We resolve complementary literals against known facts:</div>
             <div>- If cell (1,1) has No Breeze, resolution derives Not P(1,2) and Not P(2,1).</div>
@@ -550,39 +554,39 @@ function generateHtml(inlineB64 = false) {
         </div>
       </div>
 
-      <div class="pt-2 border-t border-[#202952] flex justify-end">
-        <button onclick="closeLogicManualModal()" class="df-btn df-btn-emerald text-[7.5px]">CLOSE MANUAL</button>
+      <div class="pt-3 border-t border-[#202952] flex justify-end">
+        <button onclick="closeLogicManualModal()" class="df-btn df-btn-emerald text-[10px] py-2 px-3.5">CLOSE MANUAL</button>
       </div>
     </div>
   </div>
 
   <!-- MODAL: VICTORY SUMMARY -->
   <div id="victory-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
-    <div class="df-frame df-corners p-5 max-w-lg w-full space-y-4 relative border-2 border-[var(--df-gold-bright)]">
+    <div class="df-frame df-corners p-6 max-w-lg w-full space-y-4 relative border-2 border-[var(--df-gold-bright)]">
       <div class="df-finial-top">▲</div>
       <div class="df-finial-bot">▼</div>
 
-      <div class="flex items-center justify-between border-b border-[#202952] pb-2">
-        <div class="flex items-center gap-2">
-          <div class="w-3 h-3 bg-emerald-400 rotate-45 shadow-[0_0_8px_#10b981]"></div>
-          <h3 class="text-[9.5px] text-[#fcedb6] font-bold tracking-wider">EXPEDITION TRIUMPH!</h3>
+      <div class="flex items-center justify-between border-b border-[#202952] pb-2.5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-3.5 h-3.5 bg-emerald-400 rotate-45 shadow-[0_0_10px_#10b981]"></div>
+          <h3 class="text-[11px] md:text-[13px] text-[#fcedb6] font-bold tracking-wider">EXPEDITION TRIUMPH!</h3>
         </div>
-        <button onclick="closeVictoryModal()" class="df-btn text-[7.5px] px-2 py-0.5">X</button>
+        <button onclick="closeVictoryModal()" class="df-btn text-[10px] px-2.5 py-1">X</button>
       </div>
 
-      <div class="space-y-3">
-        <div class="grid grid-cols-2 gap-3">
-          <div class="df-inset p-3 text-center">
-            <span class="text-slate-400 text-[6.5px] block">YOUR FINAL SCORE</span>
-            <div class="text-base text-[#fcedb6] mt-1.5 font-bold" id="v-player-score">1000</div>
+      <div class="space-y-3.5">
+        <div class="grid grid-cols-2 gap-3.5">
+          <div class="df-inset p-3.5 text-center">
+            <span class="text-slate-400 text-[8.5px] block font-bold">YOUR FINAL SCORE</span>
+            <div class="text-lg md:text-xl text-[#fcedb6] mt-2 font-bold" id="v-player-score">1000</div>
           </div>
-          <div class="df-inset p-3 text-center">
-            <span class="text-slate-400 text-[6.5px] block">AIMA THEORETICAL MAX</span>
-            <div class="text-base text-emerald-400 mt-1.5 font-bold" id="v-best-score">1100</div>
+          <div class="df-inset p-3.5 text-center">
+            <span class="text-slate-400 text-[8.5px] block font-bold">AIMA THEORETICAL MAX</span>
+            <div class="text-lg md:text-xl text-emerald-400 mt-2 font-bold" id="v-best-score">1100</div>
           </div>
         </div>
 
-        <div class="df-inset p-3 text-[7px] leading-relaxed text-slate-300 space-y-1">
+        <div class="df-inset p-3.5 text-[9px] md:text-[10px] leading-relaxed text-slate-200 space-y-1.5">
           <div><b class="text-emerald-400">AIMA OPTIMAL DEDUCTION:</b></div>
           <div>1. Safe ingress via resolution proofs at (1,1) -> (1,2) -> (2,1).</div>
           <div>2. Wumpus isolated and eliminated with single arrow.</div>
@@ -590,11 +594,11 @@ function generateHtml(inlineB64 = false) {
         </div>
       </div>
 
-      <div class="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-[#202952]">
-        <button onclick="closeVictoryModal(); showScreen('title');" class="df-btn text-[7px]">
+      <div class="flex flex-wrap justify-between items-center gap-3 pt-3 border-t border-[#202952]">
+        <button onclick="closeVictoryModal(); showScreen('title');" class="df-btn text-[9.5px] py-2 px-3">
           TITLE MENU
         </button>
-        <button onclick="closeVictoryModal(); changeMap(1);" class="df-btn df-btn-emerald text-[7.5px]">
+        <button onclick="closeVictoryModal(); changeMap(1);" class="df-btn df-btn-emerald text-[10px] py-2 px-3.5">
           NEXT EXPEDITION ►
         </button>
       </div>
@@ -603,33 +607,33 @@ function generateHtml(inlineB64 = false) {
 
   <!-- MODAL: GAME OVER -->
   <div id="gameover-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
-    <div class="df-frame df-corners p-5 max-w-md w-full space-y-4 relative border-2 border-red-700">
+    <div class="df-frame df-corners p-6 max-w-md w-full space-y-4 relative border-2 border-red-700">
       <div class="df-finial-top">▲</div>
       <div class="df-finial-bot">▼</div>
 
-      <div class="flex items-center justify-between border-b border-[#202952] pb-2">
-        <div class="flex items-center gap-2">
-          <div class="w-3 h-3 bg-red-500 rotate-45 shadow-[0_0_8px_#ef4444]"></div>
-          <h3 class="text-[9px] text-red-400 font-bold tracking-wider">EXPEDITION FAILED</h3>
+      <div class="flex items-center justify-between border-b border-[#202952] pb-2.5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-3.5 h-3.5 bg-red-500 rotate-45 shadow-[0_0_10px_#ef4444]"></div>
+          <h3 class="text-[11px] md:text-[12px] text-red-400 font-bold tracking-wider">EXPEDITION FAILED</h3>
         </div>
-        <button onclick="closeGameOverModal()" class="df-btn text-[7.5px] px-2 py-0.5">X</button>
+        <button onclick="closeGameOverModal()" class="df-btn text-[10px] px-2.5 py-1">X</button>
       </div>
 
-      <div class="space-y-3">
-        <div class="df-inset p-3 border border-red-900/60 text-slate-300 text-[7.5px] leading-relaxed" id="go-reason">
+      <div class="space-y-3.5">
+        <div class="df-inset p-3.5 border border-red-900/60 text-slate-200 text-[9.5px] md:text-[10.5px] leading-relaxed" id="go-reason">
           Archer met an untimely demise in the dark caverns.
         </div>
-        <div class="df-inset p-2.5 text-center">
-          <span class="text-slate-400 text-[6.5px]">SCORE AT DEATH: </span>
-          <span class="text-red-400 text-[8.5px] font-bold" id="go-score">0</span>
+        <div class="df-inset p-3 text-center">
+          <span class="text-slate-400 text-[8.5px] font-bold">SCORE AT DEATH: </span>
+          <span class="text-red-400 text-[12px] font-bold" id="go-score">0</span>
         </div>
       </div>
 
-      <div class="flex justify-between items-center pt-2 border-t border-[#202952]">
-        <button onclick="closeGameOverModal(); showScreen('title');" class="df-btn text-[7px]">
+      <div class="flex justify-between items-center pt-3 border-t border-[#202952]">
+        <button onclick="closeGameOverModal(); showScreen('title');" class="df-btn text-[9.5px] py-2 px-3">
           TITLE MENU
         </button>
-        <button onclick="closeGameOverModal(); resetGame();" class="df-btn df-btn-red text-[7.5px]">
+        <button onclick="closeGameOverModal(); resetGame();" class="df-btn df-btn-red text-[10px] py-2 px-3.5">
           RETRY EXPEDITION
         </button>
       </div>
@@ -638,35 +642,35 @@ function generateHtml(inlineB64 = false) {
 
   <!-- MODAL: FORMAL MATHEMATICAL PROOF MODAL -->
   <div id="math-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
-    <div class="df-frame df-corners p-5 max-w-xl w-full space-y-3.5 relative border-2 border-[var(--df-gold-mid)]">
+    <div class="df-frame df-corners p-6 max-w-xl w-full space-y-4 relative border-2 border-[var(--df-gold-mid)]">
       <div class="df-finial-top">▲</div>
       <div class="df-finial-bot">▼</div>
 
-      <div class="flex items-center justify-between border-b border-[#202952] pb-2">
-        <div class="flex items-center gap-2">
-          <div class="w-3 h-3 bg-amber-400 rotate-45"></div>
-          <h3 class="text-[9px] text-[#fcedb6] font-bold tracking-wider">AIMA PROPOSITIONAL PROOF GRIMOIRE</h3>
+      <div class="flex items-center justify-between border-b border-[#202952] pb-2.5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-3.5 h-3.5 bg-amber-400 rotate-45"></div>
+          <h3 class="text-[11px] md:text-[12px] text-[#fcedb6] font-bold tracking-wider">AIMA PROPOSITIONAL PROOF GRIMOIRE</h3>
         </div>
-        <button onclick="closeMathModal()" class="df-btn text-[7.5px] px-2 py-0.5">X</button>
+        <button onclick="closeMathModal()" class="df-btn text-[10px] px-2.5 py-1">X</button>
       </div>
 
-      <div class="space-y-2 text-[7px] leading-relaxed text-slate-300 max-h-[55vh] overflow-y-auto pr-1">
-        <div class="df-inset p-2">
+      <div class="space-y-2.5 text-[9px] md:text-[10px] leading-relaxed text-slate-200 max-h-[55vh] overflow-y-auto pr-1">
+        <div class="df-inset p-3">
           <b class="text-[#fcedb6]">1. PROPOSITIONAL REFUTATION RESOLUTION:</b><br>
           KB ∧ ¬OK(x,y) ⊢ □ (Empty Clause).<br>
           Resolving (¬Breeze ∧ ¬Stench) against (Pit ∨ Wumpus) derives contradiction, guaranteeing room safety.
         </div>
-        <div class="df-inset p-2">
+        <div class="df-inset p-3">
           <b class="text-amber-300">2. WUMPUS ISOLATION THEOREM:</b><br>
           Stench(1,2) ∧ ¬Stench(2,1) ∧ ¬Stench(1,1) ⇒ Wumpus(1,3) UNIQUE (Confidence P = 1.0).
         </div>
-        <div class="df-inset p-2">
+        <div class="df-inset p-3">
           <b class="text-emerald-400">3. PAR SCORE OPTIMIZATION:</b><br>
           MaxScore = 1000(Gold) + 1000(ClimbOut) - Steps - 10(Arrow) = <b class="text-emerald-400">1100 PTS</b>.
         </div>
       </div>
-      <div class="flex justify-end pt-2 border-t border-[#202952]">
-        <button onclick="closeMathModal()" class="df-btn text-[7.5px]">CLOSE</button>
+      <div class="flex justify-end pt-3 border-t border-[#202952]">
+        <button onclick="closeMathModal()" class="df-btn text-[10px] py-1.5 px-3">CLOSE</button>
       </div>
     </div>
   </div>
@@ -764,7 +768,7 @@ function generateHtml(inlineB64 = false) {
       grid.innerHTML = "";
       WUMPUS_MAPS.forEach((m, idx) => {
         const card = document.createElement("div");
-        card.className = "p-2 bg-[#060a20] border cursor-pointer hover:border-[var(--df-gold-bright)] transition-all flex flex-col justify-between space-y-1 rounded text-center " +
+        card.className = "p-2.5 bg-[#060a20] border cursor-pointer hover:border-[var(--df-gold-bright)] transition-all flex flex-col justify-between space-y-1.5 rounded text-center " +
           (selectedMapIndex === idx ? "border-[var(--df-gold-bright)] bg-[#0c153d]" : "border-[#1b2554]");
         card.id = "map-card-" + idx;
         card.onclick = () => {
@@ -773,17 +777,17 @@ function generateHtml(inlineB64 = false) {
         };
 
         const title = document.createElement("div");
-        title.className = "text-[7.5px] text-[#fcedb6] font-bold";
+        title.className = "text-[9px] md:text-[10px] text-[#fcedb6] font-bold";
         title.innerText = m.name;
 
         const desc = document.createElement("div");
-        desc.className = "text-[6px] text-sky-200/70 truncate";
+        desc.className = "text-[7.5px] text-sky-200/80 truncate";
         desc.innerText = m.description;
 
         const stats = document.createElement("div");
-        stats.className = "text-[6px] text-slate-400 pt-1 border-t border-[#151f47] flex justify-around";
-        stats.innerHTML = "<span class='text-rose-300'>Pits: " + m.aima.pits.length + "</span>" +
-          "<span class='text-amber-300'>Gold: (" + m.aima.gold[0] + "," + m.aima.gold[1] + ")</span>";
+        stats.className = "text-[7.5px] text-slate-300 pt-1.5 border-t border-[#151f47] flex justify-around";
+        stats.innerHTML = "<span class='text-rose-300 font-bold'>Pits: " + m.aima.pits.length + "</span>" +
+          "<span class='text-amber-300 font-bold'>Gold: (" + m.aima.gold[0] + "," + m.aima.gold[1] + ")</span>";
 
         card.appendChild(title);
         card.appendChild(desc);
@@ -1055,20 +1059,16 @@ function generateHtml(inlineB64 = false) {
       const tileImg = stoneTiles[tileIdx];
 
       if (tileImg && tileImg.complete && tileImg.naturalWidth > 0) {
-        // Draw real medieval stone dungeon flagstones from Image 2
         cctx.drawImage(tileImg, x, y, size, size);
 
         if (!isVisited) {
-          // Unvisited rooms: dark fog tint over the stone
           cctx.fillStyle = 'rgba(4, 6, 16, 0.88)';
           cctx.fillRect(x, y, size, size);
         } else {
-          // Visited rooms: subtle stone depth border
           cctx.fillStyle = 'rgba(255, 235, 170, 0.04)';
           cctx.fillRect(x, y, size, size);
         }
       } else {
-        // High-fidelity fallback procedural stone flagstones
         const isEven = (col + row) % 2 === 0;
         cctx.fillStyle = isVisited ? (isEven ? '#38322a' : '#453e34') : '#11100e';
         cctx.fillRect(x, y, size, size);
@@ -1079,23 +1079,23 @@ function generateHtml(inlineB64 = false) {
       cctx.lineWidth = 1.5;
       cctx.strokeRect(x, y, size, size);
 
-      // --- CENTERED ROOM COORDINATES (USER DIRECTIVE: TOẠ ĐỘ HIỆN CHÍNH GIỮA) ---
+      // --- CENTERED ROOM COORDINATES (LARGER, HIGH-CONTRAST LEGIBILITY) ---
       const aimaX = col + 1;
       const aimaY = 4 - row;
       const cx = x + size / 2;
       const cy = y + size / 2;
 
       cctx.save();
-      cctx.font = '9px "Press Start 2P"';
+      cctx.font = 'bold 15px "Press Start 2P"';
       cctx.textAlign = 'center';
       cctx.textBaseline = 'middle';
 
       // Drop shadow for crisp readability against stone floor
-      cctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
-      cctx.fillText(\`(\${aimaX},\${aimaY})\`, cx + 1, cy + 1);
+      cctx.fillStyle = 'rgba(0, 0, 0, 0.95)';
+      cctx.fillText(\`(\${aimaX},\${aimaY})\`, cx + 1.5, cy + 1.5);
 
-      // Engraved rune stone coordinates
-      cctx.fillStyle = isVisited ? 'rgba(252, 237, 182, 0.40)' : 'rgba(150, 165, 195, 0.16)';
+      // Engraved rune stone coordinates in crisp gold / slate
+      cctx.fillStyle = isVisited ? 'rgba(252, 237, 182, 0.55)' : 'rgba(160, 180, 220, 0.25)';
       cctx.fillText(\`(\${aimaX},\${aimaY})\`, cx, cy);
       cctx.restore();
     }
@@ -1211,7 +1211,6 @@ function generateHtml(inlineB64 = false) {
         if (slimeSprite && slimeSprite.complete && slimeSprite.naturalWidth > 0) {
           cctx.drawImage(slimeSprite, -34, -22, 68, 44);
         } else {
-          // Procedural slime fallback
           cctx.fillStyle = '#16a34a';
           cctx.beginPath();
           cctx.arc(0, 0, 24, 0, Math.PI * 2);
@@ -1230,14 +1229,14 @@ function generateHtml(inlineB64 = false) {
         // Retro Red SLAIN Banner
         cctx.save();
         cctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
-        cctx.fillRect(cx - 24, cy - 8, 48, 12);
+        cctx.fillRect(cx - 26, cy - 8, 52, 14);
         cctx.strokeStyle = '#ef4444';
-        cctx.strokeRect(cx - 24, cy - 8, 48, 12);
+        cctx.strokeRect(cx - 26, cy - 8, 52, 14);
         cctx.fillStyle = '#ef4444';
-        cctx.font = '6.5px "Press Start 2P"';
+        cctx.font = '8px "Press Start 2P"';
         cctx.textAlign = 'center';
         cctx.textBaseline = 'middle';
-        cctx.fillText('SLAIN', cx, cy - 2);
+        cctx.fillText('SLAIN', cx, cy - 1);
       }
       cctx.restore();
     }
@@ -1565,12 +1564,12 @@ function generateHtml(inlineB64 = false) {
       const aimaY = 4 - row;
 
       const card = document.createElement('div');
-      card.className = 'df-inset p-2 border-l-2 border-l-[var(--df-gold-bright)] text-slate-300 space-y-1';
+      card.className = 'df-inset p-3 border-l-2 border-l-[var(--df-gold-bright)] text-slate-200 space-y-1.5';
 
       let perceptStr = [];
-      if (breeze) perceptStr.push('<span class="text-sky-300">Breeze</span>');
-      if (stench) perceptStr.push('<span class="text-emerald-400">Stench</span>');
-      if (perceptStr.length === 0) perceptStr.push('<span class="text-slate-400">Clear Air</span>');
+      if (breeze) perceptStr.push('<span class="text-sky-300 font-bold">Breeze</span>');
+      if (stench) perceptStr.push('<span class="text-emerald-400 font-bold">Stench</span>');
+      if (perceptStr.length === 0) perceptStr.push('<span class="text-slate-400 font-bold">Clear Air</span>');
 
       let inference = '';
       if (!breeze && !stench) {
@@ -1582,11 +1581,11 @@ function generateHtml(inlineB64 = false) {
       }
 
       card.innerHTML = \`
-        <div class="flex justify-between items-center text-[6.5px] border-b border-[#1b2554] pb-0.5">
+        <div class="flex justify-between items-center text-[8.5px] border-b border-[#1b2554] pb-1">
           <span class="text-[#fcedb6] font-bold">ROOM (\${aimaX}, \${aimaY}) PROOF</span>
           <span>\${perceptStr.join(' • ')}</span>
         </div>
-        <div class="text-[6.5px] leading-relaxed">\${inference}</div>
+        <div class="text-[8.5px] md:text-[9.5px] leading-relaxed">\${inference}</div>
       \`;
 
       stream.prepend(card);
@@ -1595,31 +1594,31 @@ function generateHtml(inlineB64 = false) {
 
     function showFramedToast(type, text) {
       const t = document.createElement('div');
-      t.className = 'fixed top-12 left-1/2 -translate-x-1/2 z-50 df-frame df-corners px-4 py-2 flex items-center gap-2 shadow-2xl animate-bounce';
+      t.className = 'fixed top-12 left-1/2 -translate-x-1/2 z-50 df-frame df-corners px-5 py-3 flex items-center gap-3 shadow-2xl animate-bounce';
 
       let msg = text || '';
       let badge = '';
       if (type === 'BUMP') {
         msg = 'Wall Boundary Reached! (Bump perceived)';
-        badge = '<span class="px-2 py-0.5 bg-red-950 text-red-300 border border-red-600 font-bold text-[7.5px]">BUMP</span>';
+        badge = '<span class="px-2.5 py-1 bg-red-950 text-red-300 border border-red-600 font-bold text-[9px]">BUMP</span>';
       } else if (type === 'GOLD_COLLECTED') {
         msg = 'Gold treasure secured! (+1000 pts)';
-        badge = '<span class="px-2 py-0.5 bg-amber-500 text-black font-bold text-[7.5px]">GOLD +1000</span>';
+        badge = '<span class="px-2.5 py-1 bg-amber-500 text-black font-bold text-[9px]">GOLD +1000</span>';
       } else if (type === 'SCREAM') {
         msg = 'Distant agonizing howl: The Wumpus has been slain!';
-        badge = '<span class="px-2 py-0.5 bg-rose-950 text-rose-300 border border-rose-600 font-bold text-[7.5px]">SCREAM</span>';
+        badge = '<span class="px-2.5 py-1 bg-rose-950 text-rose-300 border border-rose-600 font-bold text-[9px]">SCREAM</span>';
       } else if (type === 'MAP_LOADED') {
         msg = text;
-        badge = '<span class="px-2 py-0.5 bg-sky-900 text-sky-200 border border-sky-500 font-bold text-[7.5px]">MAP LOADED</span>';
+        badge = '<span class="px-2.5 py-1 bg-sky-900 text-sky-200 border border-sky-500 font-bold text-[9px]">MAP LOADED</span>';
       } else if (type === 'CAUTION') {
         msg = text;
-        badge = '<span class="px-2 py-0.5 bg-amber-950 text-amber-300 border border-amber-600 font-bold text-[7.5px]">NOTICE</span>';
+        badge = '<span class="px-2.5 py-1 bg-amber-950 text-amber-300 border border-amber-600 font-bold text-[9px]">NOTICE</span>';
       }
 
       t.innerHTML = \`
         <div class="df-finial-top">▲</div>
         \${badge}
-        <span class="text-[#fcedb6] text-[7.5px] font-bold">\${msg}</span>
+        <span class="text-[#fcedb6] text-[9.5px] md:text-[10.5px] font-bold">\${msg}</span>
       \`;
       document.body.appendChild(t);
       setTimeout(() => { if (t) t.remove(); }, 3200);
@@ -1721,4 +1720,4 @@ const inlinedHtml = generateHtml(true);
 fs.writeFileSync('/Users/dieptuhuy/.gemini/antigravity/brain/51cdc300-3a2f-4800-8d7e-d056543d88ca/wumpus_preview.html', inlinedHtml, 'utf8');
 fs.writeFileSync('index.html', inlinedHtml, 'utf8');
 
-console.log('Successfully generated centered RPG game with restored Godot lighting, centered coordinates, green slime Wumpus animation, and Image 2 stone textures!');
+console.log('Successfully generated centered RPG game with enlarged comfortable pixel typography!');
