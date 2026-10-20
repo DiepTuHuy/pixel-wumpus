@@ -18,32 +18,37 @@
    - **Map Browser Modal**: Full grid modal to browse and select from all 21 maps with one click.
    - Comprehensive **Rules & Senses** modal and **AIMA Logic Manual** modal.
 
-2. **Godot-Style 2D Dynamic Radial Torch Lighting**:
-   - Realistic multi-stop radial gradient centered directly on the player coordinate.
-   - Organic torch flickering with subtle radius perturbation.
-   - Unvisited rooms enveloped in dark cavern fog of war; visited rooms revealed with stone flagstone textures.
+2. **Centered Map Layout & Integrated RPG Frame**:
+   - The 4x4 dungeon map sits majestically right in the center of the viewport.
+   - Integrated top status ribbon directly inside the map's rectangular frame (`POS: (x, y)`, `SCORE: 1000`, `ARROWS: 1`, and active Perception cues).
+   - Real-time perception indicators (`BREEZE`, `STENCH`, `GLITTER`, `SCREAM`) cleanly docked within the frame.
 
-3. **High-Fidelity 2D Pixel Archer**:
+3. **Handcrafted Procedural RPG Tile Textures**:
+   - Authentic 2D dungeon stone paving with beveled edge highlights, dark mortar joints, weathered cracks, and subtly inscribed `(x, y)` AIMA coordinate markers.
+   - **Pit Chasms**: Craggy stone rim descending into a deep abyssal void with swirling violet mist.
+   - **Gold Chest**: Handcrafted mahogany chest with gilded gold bands, keyhole, and twinkling star sparkle glints.
+   - **The Ravenous Wumpus**: Fierce beast with glowing predator eyes, fangs, and shaggy fur; slumps into a defeated posture with banner when slain.
+
+4. **UI Zoom & Scaling Customization**:
+   - Built-in UI zoom controls (`SCALE: 80% / 100% / 120%`) with quick hotkeys (`+` / `-` / `0`) for seamless responsive adaptation on any display.
+
+5. **High-Fidelity 2D Pixel Archer & Godot-Style Torchlight**:
    - Custom 360x460 high-definition pixel sprites with an intact hood (16,113 pixels preserved).
-   - Authentic **4-phase forward stride walk cycle** (`walk0` $\to$ `walk1` $\to$ `walk2` $\to$ `walk3`) with knee flexion, apex rise, and heel contact.
+   - Authentic **4-phase forward stride walk cycle** (`walk0` -> `walk1` -> `walk2` -> `walk3`) with knee flexion, apex rise, and heel contact.
    - Directional horizontal turning (`scaleX = 1 / -1`) when moving left or right.
-   - Complete shooting sequence with bow draw, full tension, release, and flying arrow projectile.
+   - Dynamic 2D radial torchlight centered on the player with atmospheric dark cavern fog of war.
 
-4. **Verifiable AIMA Propositional Clause Resolution Engine**:
-   - Background inference engine maintaining a Propositional Knowledge Base ($KB$).
-   - Refutation resolution proof ($KB \wedge \neg \alpha \vdash \square$) executed upon every perception to mathematically prove safe rooms ($OK_{x,y}$) and isolate the Wumpus.
-   - Real-time grimoire stream detailing axiomatic derivations, unit clauses, and contradiction proofs.
+6. **Verifiable AIMA Propositional Clause Resolution Engine**:
+   - Background inference engine maintaining a Propositional Knowledge Base (KB).
+   - Refutation resolution proof (`KB ∧ ¬α ⊢ □`) executed upon every perception to mathematically prove safe rooms (`OK_x,y`) and isolate the Wumpus.
+   - Streamlined live log detailing axiomatic derivations and contradiction proofs.
 
-5. **Universal Pixel Typography & Zero-Emoji Constraint**:
+7. **Universal Pixel Typography & Zero-Emoji Constraint**:
    - Pure retro typography using `'Press Start 2P', monospace` across all screens, buttons, HUD, and modals.
-   - Localized in English to prevent font-fallback glitches and ensure uniform 8-bit glyph rendering.
    - Strictly zero emojis or external icon fonts; only 4 directional arrows on movement buttons (`◄`, `▲`, `▼`, `►`) and pure CSS geometric diamond accents.
 
-6. **Web Audio Synthesizer**:
+8. **Web Audio Synthesizer**:
    - Procedural sound effects using Web Audio API oscillators: footsteps, bow drawing, arrow whoosh, Wumpus death scream, pit falls, and victory chimes.
-
-7. **Interactive Animation Studio**:
-   - Integrated test bench with 10-frame filmstrip inspector, Treadmill vs Forward Stride modes, variable playback speeds (0.2x, 0.5x, 1x, 2x), and lighting toggle.
 
 ---
 
