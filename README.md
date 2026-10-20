@@ -1,61 +1,69 @@
 # Pixel Wumpus World: Caverns of Logic
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-success.svg?style=for-the-badge&logo=github)](https://dieptuhuy.github.io/pixel-wumpus/)
+[![Live Demo](https://img.shields.io/badge/Play%20Online-GitHub%20Pages-success.svg?style=for-the-badge&logo=github)](https://dieptuhuy.github.io/pixel-wumpus/)
 [![AIMA Propositional Logic](https://img.shields.io/badge/AIMA-Propositional%20Logic-amber.svg)](#aima-theorem-proving--clause-resolution)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![HTML5 Canvas](https://img.shields.io/badge/Engine-HTML5%20Canvas%202D-emerald.svg)](#architecture)
 [![Font: Press Start 2P](https://img.shields.io/badge/Font-Press%20Start%202P-purple.svg)](#visual--aesthetic-design)
 
-> **Play Live on GitHub Pages:** **[https://dieptuhuy.github.io/pixel-wumpus/](https://dieptuhuy.github.io/pixel-wumpus/)**
+---
 
-An authentic 2D retro Dark Fantasy adaptation of Russell & Norvig's classic **Wumpus World** (*Artificial Intelligence: A Modern Approach - AIMA*), featuring Godot-style 2D radial torch lighting with 20% edge feathering, medieval battlemap stone textures, high-fidelity pixel archer walk cycles, real-time propositional clause resolution refutation proofs, Web Audio synthesis, and an atmospheric Start Screen.
+### 🌐 Play Live on GitHub Pages:
+## 👉 **[https://dieptuhuy.github.io/pixel-wumpus/](https://dieptuhuy.github.io/pixel-wumpus/)**
+
+---
+
+> An authentic 2D retro Dark Fantasy adaptation of Russell & Norvig's classic **Wumpus World** (*Artificial Intelligence: A Modern Approach - AIMA*), featuring Godot-style 2D radial torch lighting with 20% edge feathering, medieval battlemap stone textures, high-fidelity pixel archer walk cycles, real-time propositional clause resolution refutation proofs, Web Audio synthesis, and a balanced zero-scroll viewport layout.
 
 ---
 
 ## 🌟 Key Features
 
-1. **Atmospheric Dark Fantasy Start Screen & Map Selector**:
+1. **Balanced Zero-Scroll Viewport Layout**:
+   - The entire game interface (Header + Map Frame + HUD + D-Pad + AIMA Proof Log) is balanced within **~710px** vertical height.
+   - Fits effortlessly on any standard laptop (13", 14", 15") and desktop displays (1080p, 1440p) **without requiring any vertical scrolling** during gameplay.
+   - Integrated UI zoom controls (`- 100% + 0`) with quick hotkeys (`+` / `-` / `0`) for full responsive control.
+
+2. **Refined Godot-Style 2D Torch Lighting (20% Edge Feathering)**:
+   - Multi-layer radial lighting using offscreen canvas masking (`destination-out`) and warm screen blending (`screen`).
+   - Visited rooms smoothly feather their light by **20%** past cell borders into adjacent shadows, eliminating unnatural square cuts.
+   - Adjacent explored chambers blend into one continuous, atmospheric cavern hall.
+   - Dynamic torch halo flickers and casts glowing amber reflections over the medieval stone floor.
+
+3. **Atmospheric Dark Fantasy Start Screen & Map Selector**:
    - Majestic title banner in antique gold typography (`Press Start 2P`).
-   - Dynamic 2D cavern entrance view with an idle breathing archer, central torchlight halo, and floating golden embers.
+   - 2D cavern entrance centerpiece with an idle breathing archer, central torchlight halo, and floating golden embers.
    - **Interactive Map Selector (21 Authentic AIMA Maps)**: Choose any map from Map 00 (Canonical AIMA Book Scenario) to Map 20 with real-time pit counts and gold/wumpus preview.
    - **Map Browser Modal**: Full grid modal to browse and select from all 21 maps with one click.
    - Comprehensive **Rules & Senses** modal and **AIMA Logic Manual** modal.
 
-2. **Centered Map Layout & Integrated RPG Frame**:
-   - The 4x4 dungeon map sits majestically right in the center of the viewport.
-   - Integrated top status ribbon directly inside the map's rectangular frame (`POS: (x, y)`, `SCORE: 1000`, `ARROWS: 1`, and active Perception cues).
+4. **Centered Map Layout & Integrated RPG Frame**:
+   - The 4x4 dungeon map sits squarely in the center of the viewport.
+   - Integrated top status ribbon inside the map frame (`POS: (x, y)`, `MAP 00`, `SCORE: 1000`, `ARROWS: 1`).
    - Real-time perception indicators (`BREEZE`, `STENCH`, `GLITTER`, `SCREAM`) cleanly docked within the frame.
 
-3. **Handcrafted Procedural & Battlemap RPG Textures**:
-   - Authentic 2D dungeon stone flagstones directly sourced and adapted from medieval battlemap textures with weathered mortar joints and stone cracks.
+5. **Handcrafted Procedural & Battlemap RPG Textures**:
+   - Authentic 2D dungeon stone flagstones directly adapted from medieval battlemap textures with weathered mortar joints.
    - **Centered Room Coordinates**: Clear engraved coordinate watermarks `(x, y)` centered directly inside each chamber.
-   - **Animated Green Slime Wumpus**: An expressive green pixel slime monster featuring squish-and-stretch breathing animation, bioluminescent slime aura, and a melted puddle pose with `SLAIN` banner when defeated.
+   - **Animated Green Slime Wumpus**: Expressive green pixel slime monster featuring squish-and-stretch breathing animation, bioluminescent slime aura, and a melted puddle pose with `SLAIN` banner when defeated.
    - **Pit Chasms**: Craggy stone rim descending into a deep abyssal void with swirling violet mist vortex.
    - **Gold Chest**: Handcrafted mahogany chest with gilded gold bands, keyhole, and twinkling star sparkle glints.
 
-4. **Restored Warm Godot-Style 2D Torch Lighting**:
-   - Centered precisely on the player coordinate with multi-stop radial gradient using `'screen'` blend mode.
-   - Vibrant warm orange-gold torch flame casting atmospheric reflections over the medieval stone slabs, enveloped in deep cavern fog of war.
-
-4. **UI Zoom & Scaling Customization**:
-   - Built-in UI zoom controls (`SCALE: 80% / 100% / 120%`) with quick hotkeys (`+` / `-` / `0`) for seamless responsive adaptation on any display.
-
-5. **High-Fidelity 2D Pixel Archer & Godot-Style Torchlight**:
-   - Custom 360x460 high-definition pixel sprites with an intact hood (16,113 pixels preserved).
+6. **High-Fidelity 2D Pixel Archer**:
+   - Custom high-definition pixel sprites with an intact hood.
    - Authentic **4-phase forward stride walk cycle** (`walk0` -> `walk1` -> `walk2` -> `walk3`) with knee flexion, apex rise, and heel contact.
    - Directional horizontal turning (`scaleX = 1 / -1`) when moving left or right.
-   - Dynamic 2D radial torchlight centered on the player with atmospheric dark cavern fog of war.
 
-6. **Verifiable AIMA Propositional Clause Resolution Engine**:
+7. **Verifiable AIMA Propositional Clause Resolution Engine**:
    - Background inference engine maintaining a Propositional Knowledge Base (KB).
    - Refutation resolution proof (`KB ∧ ¬α ⊢ □`) executed upon every perception to mathematically prove safe rooms (`OK_x,y`) and isolate the Wumpus.
    - Streamlined live log detailing axiomatic derivations and contradiction proofs.
 
-7. **Universal Pixel Typography & Zero-Emoji Constraint**:
+8. **Universal Pixel Typography & Zero-Emoji Constraint**:
    - Pure retro typography using `'Press Start 2P', monospace` across all screens, buttons, HUD, and modals.
    - Strictly zero emojis or external icon fonts; only 4 directional arrows on movement buttons (`◄`, `▲`, `▼`, `►`) and pure CSS geometric diamond accents.
 
-8. **Web Audio Synthesizer**:
+9. **Web Audio Synthesizer**:
    - Procedural sound effects using Web Audio API oscillators: footsteps, bow drawing, arrow whoosh, Wumpus death scream, pit falls, and victory chimes.
 
 ---
