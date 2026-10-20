@@ -1,0 +1,19 @@
+# OS & Editor Artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+
+# Brainstorming & Agent Logs
+.superpowers/
+*.log
+
+# Old Reference Clones & Temporary Files
+wumpus-prolog-game/
+wumpus.qlf
+
+# Node
+node_modules/
+npm-debug.log*
