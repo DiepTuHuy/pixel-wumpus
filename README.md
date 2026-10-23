@@ -104,7 +104,7 @@
 
 ## 📐 AIMA Theorem Proving & Clause Resolution
 
-The game follows the formal propositional logic specification from Russell & Norvig:
+The game follows the formal propositional logic specification from Russell & Norvig. For an exhaustive mathematical breakdown with complete CNF derivation tables and refutation traces, see **[Comprehensive Knowledge Base Specification](docs/KNOWLEDGE_BASE.md)**.
 
 ### 1. Percept Axioms
 $$B_{x,y} \iff \bigvee_{(i,j) \in \text{Adj}(x,y)} P_{i,j}$$
@@ -121,6 +121,8 @@ To prove $OK_{x,y}$:
 4. Continue until deriving the empty clause $\square$ (Contradiction).
 5. Hence, $KB \models OK_{x,y}$ is soundly proven!
 
+👉 **Read the full formal specification:** [docs/KNOWLEDGE_BASE.md](docs/KNOWLEDGE_BASE.md)
+
 ---
 
 ## 🏗 Architecture & Code Structure
@@ -128,13 +130,15 @@ To prove $OK_{x,y}$:
 ```
 pixel-wumpus/
 ├── index.html                   # Complete standalone single-file production build
-├── README.md                    # Project documentation
+├── README.md                    # Project overview & quickstart
 ├── .gitignore                   # Ignored files and directories
 ├── src/
-│   └── logic_engine.js          # Core AIMA Propositional Logic & Resolution engine
+│   ├── logic_engine.js          # Core AIMA Propositional Logic & Resolution engine
+│   └── maps_data.json           # 21 authentic AIMA dungeon maps
 ├── test/
 │   └── logic_engine.test.js     # Unit test suite verifying logic inference & game rules
 └── docs/
+    ├── KNOWLEDGE_BASE.md        # Exhaustive AIMA Propositional KB & Resolution Specification
     └── superpowers/
         ├── specs/               # Formal system design specification
         └── plans/               # Task-by-task execution plan
